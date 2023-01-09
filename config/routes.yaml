@@ -1,3 +1,9 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+
+# Appartement
+
+    path: /appartement/lister
+    controller: App\Controller\AppartementController:listerAppartement
