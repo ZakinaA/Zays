@@ -20,19 +20,4 @@ class AppartementController extends AbstractController
     }
 
 
-    // Fonction permettant de retourner la liste des appartements
-
-    public function listerAppartement(ManagerRegistry $doctrine){
-
-        $repository = $doctrine->getRepository(Appartement::class);
-    
-    $appartements= $repository->findAll();
-    return $this->render('appartement/lister.html.twig', [
-    'pApparts' => $appartements,]);	
-    
-    }
-
-
-
-
 }
