@@ -21,13 +21,12 @@ class BailController extends AbstractController
     }
 
 
-    // Fonction permettant de retourner la liste des appartements
+    // Retourner la liste des appartements avec un bail non archivé
 
     public function listerAppartements(ManagerRegistry $doctrine){
 
-        $repository = $doctrine->getRepository(Bail::class);
+        $appartements = $doctrine->getRepository(Bail::class)->findByArchive(["archive" => null]);
     
-    $appartements= $repository->findBy(['' => 0]);
     return $this->render('bail/lister.html.twig', [
     'pApparts' => $appartements,]);	
     
