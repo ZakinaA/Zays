@@ -3,8 +3,3 @@ controllers:
     type: attribute
 
 
-# Appartement
-
-instrumentLister:
-    path: /appartement/lister
-    controller: App\Controller\AppartementController::listerAppartement
