@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+<head>
+    <title> Liste des appartements </title>
+</head>
+
+<h3>Listes des appartements</h3>
+
+<table>
+<thead>
+    <tr>
+        <td>Porte</td>
+        <td>Situation</td>
+        <td>Surface</td>
+    </tr>
+</thead>
+{% for a in pApparts %}
+<tr>
+    <td><a href="">{{ a.porte }}</a></td>
+    <td>{{ a.situation }}</td>
+    <td>{{ a.surface }}</td>
+{% else %}
+<tr>
+<td>Aucun appartement n'a été trouvé.</td>
+</tr>
+{% endfor %}
+</td>
+    </tr>
+    <tbody>
+</table>

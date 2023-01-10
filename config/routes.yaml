@@ -5,5 +5,6 @@ controllers:
 
 # Appartement
 
+instrumentLister:
     path: /appartement/lister
-    controller: App\Controller\AppartementController:listerAppartement
+    controller: App\Controller\AppartementController::listerAppartement
