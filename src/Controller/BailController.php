@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Appartement;
+use App\Entity\Bail;
 
 class BailController extends AbstractController
 {
@@ -19,7 +23,7 @@ class BailController extends AbstractController
 
     // Fonction permettant de retourner la liste des appartements
 
-    public function listerAppartement(ManagerRegistry $doctrine){
+    public function listerAppartements(ManagerRegistry $doctrine){
 
         $repository = $doctrine->getRepository(Bail::class);
     

@@ -3,3 +3,8 @@ controllers:
     type: attribute
 
 
+# Appartement
+
+appartementLister:   # par BailController
+    path: /appartement/lister
+    controller: App\Controller\BailController::listerAppartements
