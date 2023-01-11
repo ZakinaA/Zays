@@ -1,0 +1,39 @@
+<head>
+    <title> Liste des appartements </title>
+</head>
+
+<h3>Listes des appartements</h3>
+
+<table>
+<thead>
+    <tr>
+        <td>Appartement</td>
+        <td>Locataire</td>
+        <td>Loyer HC</td>
+        <td>Caution</td>
+        <td>Loyer TTC</td>
+        <td>Date entrée</td>
+        <td>Surface</td>
+    </tr>
+</thead>
+{% for a in pApparts %}
+{% for l in a.locataires %}
+<tr>
+    <td><a href="">{{ a.appartement.porte }}</a></td>
+    <td>{{l.nom}} {{l.prenom}} </td>
+    <td>{{ a.montantHC }}</td>
+    <td>{{ a.montantCaution }}</td>
+    <td>{{ a.montantHC + a.montantCharges }}</td>
+    <td>{{ a.dateDebut|date("d/m/Y") }}</td>
+    <td>{{ a.appartement.surface }}</td>
+{% else %}
+<tr>
+<td>Aucun appartement n'a été trouvé.</td>
+</tr>
+{% endfor %}
+{% endfor %}
+
+</td>
+    </tr>
+    <tbody>
+</table>
