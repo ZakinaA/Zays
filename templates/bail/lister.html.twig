@@ -47,22 +47,18 @@
 {% set sommeHC = 0 %}
 {% set sommeTTC = 0 %}
 {% set sommeCaution = 0 %}
+{% for b in baux %}
+
+    {% set sommeHC = sommeHC+b.montantHC%}
+    {% set sommeTTC = sommeTTC+(b.montantHC+b.montantCharges)%}
+    {% set sommeCaution = sommeCaution+b.montantCaution%}
+{% endfor %}
 <tr>
-    <td>{% for b in baux %} 
-        {% for l in b.locataires %}
-        {% set sommeHC = sommeHC+b.montantHC%} {% endfor %} {% endfor %}{{sommeHC}}
-    </td>
+    <td>{{sommeHC}}</td>
 
-    <td>{% for b in baux %}
-        {% for l in b.locataires %}
-        {% set sommeTTC = sommeTTC+(b.montantHC+b.montantCharges)%} {% endfor %} {% endfor %}{{sommeTTC}}
-    </td>
+    <td>{{sommeTTC}}</td>
 
-    <td>{% for b in baux %}
-        {% for l in b.locataires %}
-        {% set sommeCaution = sommeCaution+b.montantCaution%} {% endfor %} {% endfor %}{{sommeCaution}}
-        
-    </td>
+    <td>{{sommeCaution}}</td>
 </tr>
 
 </table>
