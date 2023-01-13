@@ -12,8 +12,8 @@
         <td>Appartement</td>
         <td>Locataire</td>
         <td>Loyer HC</td>
-        <td>Caution</td>
         <td>Loyer TTC</td>
+        <td>Caution</td>
         <td>Date entrée</td>
         <td>Surface</td>
     </tr>
@@ -24,8 +24,8 @@
     <td><a href="">{{ a.appartement.porte }}</a></td>
     <td>{{l.nom}} {{l.prenom}} </td>
     <td>{{ a.montantHC }} {% if a.montantHC != null %}€{% endif %}</td>
-    <td>{{ a.montantCaution }} {% if a.montantCaution != null %}€{% endif %}</td>
     <td>{{ a.montantHC + a.montantCharges }} {% if a.montantHC + a.montantCharges != null %}€{% endif %}</td>
+    <td>{{ a.montantCaution }} {% if a.montantCaution != null %}€{% endif %}</td>
     <td>{{ a.dateDebut|date("d/m/Y") }}</td>
     <td>{{ a.appartement.surface }} {% if a.appartement.surface != null %}m²{% endif %}</td>
 {% else %}
