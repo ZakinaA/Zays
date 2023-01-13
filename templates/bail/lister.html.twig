@@ -9,13 +9,13 @@
 <table class="table text-sm mb-0 table-striped">
 <thead>
     <tr>
-        <td>Appartement</td>
-        <td>Locataire</td>
-        <td>Loyer HC</td>
-        <td>Loyer TTC</td>
-        <td>Caution</td>
-        <td>Date entrée</td>
-        <td>Surface</td>
+        <td><b>Appartement</b></td>
+        <td><b>Locataire</b></td>
+        <td><b>Loyer HC</b></td>
+        <td><b>Loyer TTC</b></td>
+        <td><b>Caution</b></td>
+        <td><b>Date entrée</b></td>
+        <td><b>Surface</b></td>
     </tr>
 </thead>
 {% for a in pApparts %}
@@ -28,6 +28,8 @@
     <td>{{ a.montantCaution }} {% if a.montantCaution != null %}€{% endif %}</td>
     <td>{{ a.dateDebut|date("d/m/Y") }}</td>
     <td>{{ a.appartement.surface }} {% if a.appartement.surface != null %}m²{% endif %}</td>
+</tr>
+    
 {% else %}
 <tr>
 <td>Aucun appartement n'a été trouvé.</td>
@@ -35,9 +37,32 @@
 {% endfor %}
 {% endfor %}
 
-</td>
-    </tr>
-    <tbody>
+<tr>
+    <td> Montant total LoyerHC </td>
+    <td> Montant total LoyerTTC </td>
+    <td> Montant total Caution </td>
+</tr>
+{% set sommeHC = 0 %}
+{% set sommeTTC = 0 %}
+{% set sommeCaution = 0 %}
+<tr>
+    <td>{% for a in pApparts %}
+        {% for l in a.locataires %}
+        {% set sommeHC = sommeHC+a.montantHC%} {% endfor %} {% endfor %}{{sommeHC}}
+    </td>
+
+    <td>{% for a in pApparts %}
+        {% for l in a.locataires %}
+        {% set sommeTTC = sommeTTC+(a.montantHC+a.montantCharges)%} {% endfor %} {% endfor %}{{sommeTTC}}
+    </td>
+
+    <td>{% for a in pApparts %}
+        {% for l in a.locataires %}
+        {% set sommeCaution = sommeCaution+a.montantCaution%} {% endfor %} {% endfor %}{{sommeCaution}}
+        
+    </td>
+</tr>
+
 </table>
 
 {% endblock %}
