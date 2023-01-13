@@ -6,16 +6,20 @@
 <br/>
 <h3>Listes des appartements</h3>
 <br/>
+
+    <div class="card-body">
+    <div class="table-responsive">
+
 <table class="table text-sm mb-0 table-striped">
 <thead>
     <tr>
-        <th>Appartement</th>
-        <th>Locataire</th>
-        <th>Loyer HC</th>
-        <th>Loyer TTC</th>
-        <th>Caution</th>
-        <th>Date entrée</th>
-        <th>Surface</th>
+        <th width="10%" scope="col">Appartement</th>
+        <th width="15%" scope="col">Locataire</th>
+        <th scope="col">Loyer HC</th>
+        <th scope="col">Loyer TTC</th>
+        <th scope="col">Caution</th>
+        <th scope="col">Date entrée</th>
+        <th scope="col">Surface</th>
     </tr>
 </thead>
 {% for b in baux %}
@@ -40,9 +44,10 @@
 {% endfor %}
 
 <tr>
-    <th> Montant total LoyerHC </th>
-    <th> Montant total LoyerTTC </th>
-    <th> Montant total Caution </th>
+    <th></th> <th></th>
+    <th scope="col"> Montant total LoyerHC </th>
+    <th scope="col"> Montant total LoyerTTC </th>
+    <th scope="col"> Montant total Caution </th>
 </tr>
 {% set sommeHC = 0 %}
 {% set sommeTTC = 0 %}
@@ -54,6 +59,7 @@
     {% set sommeCaution = sommeCaution+b.montantCaution%}
 {% endfor %}
 <tr>
+    <td></td> <td></td>
     <td>{{sommeHC}}</td>
 
     <td>{{sommeTTC}}</td>
@@ -62,4 +68,6 @@
 </tr>
 
 </table>
+</div>
+</div>
 {% endblock %}
