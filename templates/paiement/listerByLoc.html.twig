@@ -28,16 +28,28 @@
         </tr>
     </thead>
 
+
+    {% set datesAffichees =[] %}
+    {% set sourceVirement = 0 %}
+    {% set sourceCaf = 0 %}
+
     {% for p in bail.paiements %}
 
+    {% if p.dateP not in datesAffichees %}
     <tr>
         
         
         <td>{{ p.dateP|date("m/Y") }}</td>
-        <td> {% if p.source == null %} {{ p.montant }} {% endif %} </td>
+        <td> {% if p.source == null %} {{ p.montant }} {%set sourceVirement = sourceVirement + p.montant%} {% endif %} </td>
+        <td> {% if p.source != null %} {{p.montant}} {%set sourceCaf = sourceCaf + p.montant%} {% endif %} </td>
+        <td> {{sourceVirement + sourceCaf}} </td>
 
 
     </tr>
+
+    {% set datesAffichees = datesAffichees|merge([p.dateP]) %}
+
+    {% endif %}
     {% endfor %}
 
 </table>
