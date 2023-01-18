@@ -8,3 +8,7 @@ controllers:
 bauxLister:
     path: /baux/lister
     controller: App\Controller\BailController::listerBaux
+
+bauxConsulter:
+    path: /baux/consulter/{id} #id du bail
+    controller: App\Controller\BailController::consulterBail
