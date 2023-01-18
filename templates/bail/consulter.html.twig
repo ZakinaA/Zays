@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block style %}
 .tabBail{
-    text-align:center;
-    width:20%;
+    text-align:left;
+    width:40%;
 }  
 
 {% endblock %}
@@ -14,60 +14,62 @@
 <h3>Information du bail n°{{bail.id}}</h3>
 <br />
 	
+<div class="tabBail">
   	<table class="table text-sm mb-0 table-striped">
 
       <tr>
-    	  <td>Numéro de bail : </td><td>{{bail.id}}</td></tr></tr>
+    	  <th scope="row">Numéro de bail : </th><td>{{bail.id}}</td></tr></tr>
       <tr>
 
       <tr>
-          <td>Nom du/des locataire(s) : </td><td><a href="">{{bail.locataires[0].nom}} {% if bail.locataires[1] is defined %}{{bail.locataires[1].nom}}{% endif %}</a></td></tr></tr>
+          <th scope="row">Nom du/des locataire(s) : </th><td><a href="">{{bail.locataires[0].nom}} {% if bail.locataires[1] is defined %}{{bail.locataires[1].nom}}{% endif %}</a></td></tr></tr>
       <tr>
 
       <tr>
-        <td>Numéro d'appartement : </td><td><a href="">{{bail.appartement.porte}}</a></td></tr></tr>
+        <th scope="row">Numéro d'appartement : </th><td><a href="">{{bail.appartement.porte}}</a></td></tr></tr>
       <tr>
       
       <tr>
-        <td>Début du bail le : </td><td>{{bail.dateDebut|date("d/m/Y")}}</td></tr></tr>
+        <th scope="row">Début du bail le : </th><td>{{bail.dateDebut|date("d/m/Y")}}</td></tr></tr>
       <tr>
 
       
       <tr>
-        <td>Fin du bail : </td><td>{% if bail.dateFin is defined %} {{bail.dateFin}} {% endif %}</td></tr></tr>
+        <th scope="row">Fin du bail : </th><td>{% if bail.dateFin is defined %} {{bail.dateFin}} {% endif %}</td></tr></tr>
       <tr>
 
       <tr>
-        <td>Durée : </td><td>{{bail.dureeBail}}</td></tr></tr>
+        <th scope="row">Durée : </th><td>{{bail.dureeBail}}</td></tr></tr>
       <tr>
 
       <tr>
-        <td>Montant hors charges : </td><td>{{bail.montantHC}}€</td></tr></tr>
+        <th scope="row">Montant hors charges : </th><td>{{bail.montantHC}}€</td></tr></tr>
       <tr>
 
       <tr>
-        <td>Charges : </td><td>{{bail.montantCharges}}€</td></tr></tr>
+        <th scope="row">Charges : </th><td>{{bail.montantCharges}}€</td></tr></tr>
       <tr>
 
       <tr>
-        <td>Montant TTC : </td><td>{{bail.montantHC + bail.montantCharges}}€</td></tr></tr>
+        <th scope="row">Montant TTC : </th><td>{{bail.montantHC + bail.montantCharges}}€</td></tr></tr>
       <tr>
 
       <tr>
-        <td>Cautionneur(s) : </td><td>{{bail.nomCaution1}} {% if bail.nomCaution2 is defined and bail.nomCaution2 !='' %} & {{bail.nomCaution2}} {%endif%} </td></tr></tr>
+        <th scope="row">Cautionneur(s) : </th><td>{{bail.nomCaution1}} {% if bail.nomCaution2 is defined and bail.nomCaution2 !='' %} & {{bail.nomCaution2}} {%endif%} </td></tr></tr>
       <tr>
 
       <tr>
-        <td>Montant caution : </td><td>{{bail.montantCaution}}</td></tr></tr>
+        <th scope="row">Montant caution : </th><td>{{bail.montantCaution}}</td></tr></tr>
        <tr>
 
       <tr>
-        <td>Montant première échéance : </td><td>{{bail.montantPremEcheance}}</td></tr></tr>
+        <th scope="row">Montant première échéance : </th><td>{{bail.montantPremEcheance}}</td></tr></tr>
       <tr>
 
       <tr>
-        <td>Associé en charge : </td><td> {% if bail.associe.nom is defined %} {{bail.associe.nom}} {%endif%} </td></tr></tr>
+        <th scope="row">Associé en charge : </th><td> {% if bail.associe.nom is defined %} {{bail.associe.nom}} {%endif%} </td></tr></tr>
       <tr>
 
     </table>
+</div>
 {% endblock %}
