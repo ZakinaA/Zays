@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block style %}
+.tab{
+    text-align:center;
+}  
+
+{% endblock %}
+
+{% block title %}Liste des paiements par locataire {% endblock %}
+
+{% block contenu %}
+    
+<br/>
+
+
+<h3>Loyers de {{bail.locataires[0].nom}} {{bail.locataires[0].prenom}} {% if bail.locataires[1].nom is defined and bail.locataires[1] !='' %} et {{bail.locataires[1].nom}} {{bail.locataires[1].prenom}} {% endif %} </h3>
+
+<div class="tab">
+<table class="table text-sm mb-0 table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Mois</th>
+            <th scope="col">Versement</th>
+            <th scope="col">Caf</th>
+            <th scope="col">Total versé</th>
+            <th scope="col">Solde du mois</th>
+            <th scope="col">Solde total</th>
+        </tr>
+    </thead>
+
+    {% for p in bail.paiements %}
+
+    <tr>
+        
+        
+        <td>{{ p.dateP|date("m/Y") }}</td>
+        <td> {% if p.source == null %} {{ p.montant }} {% endif %} </td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+</div>
+
+{% endblock %}
