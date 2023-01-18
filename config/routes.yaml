@@ -8,3 +8,15 @@ controllers:
 bauxLister:
     path: /baux/lister
     controller: App\Controller\BailController::listerBaux
+
+
+
+
+
+
+
+# Paiement
+
+paiementLocLister:
+    path: /paiement/lister/loc/{id} #id du bail
+    controller: App\Controller\PaiementController::listerPaiementsLoc
