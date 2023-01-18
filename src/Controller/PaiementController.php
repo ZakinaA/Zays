@@ -15,4 +15,24 @@ class PaiementController extends AbstractController
             'controller_name' => 'PaiementController',
         ]);
     }
+
+
+        // Permet de récupérer la liste des paiements en fonction bail et donc des locataires
+    public function listerPaiementsLoc(ManagerRegistry $doctrine, int $id){
+
+        $bail = $doctrine->getRepository(Bail::class)->find($id);
+
+
+        if (!$bail) 
+            throw $this->createNotFoundException(
+            'Aucun paiement trouvé pour le bail n°'.$id
+            );
+        
+        
+        return $this->render('paiement/listerByLoc.html.twig', [
+            'bail' => $bail,]);
+    
+    }
+
+
 }
