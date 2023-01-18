@@ -33,4 +33,24 @@ class BailController extends AbstractController
     }
 
 
+
+    // Retourner les informations d'un bail pour le consulter
+
+    public function consulterBail(ManagerRegistry $doctrine, int $id){
+
+        $bail = $doctrine->getRepository(Bail::class)->find($id);
+
+        if (!$bail) {
+            throw $this->createNotFoundException(
+            'Aucun bail trouvé'
+            );
+        }
+
+        return $this->render('bail/consulter.html.twig', [
+            'bail' => $bail,]);
+
+}
+
+
+
 }
