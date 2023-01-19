@@ -33,4 +33,48 @@ class BailController extends AbstractController
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Ajout d'un bail à partir d'un formulaire
+
+    public function ajouterBail(Request $request, ManagerRegistry $doctrine){
+        $bail = new Bail();
+        $form = $this->createForm(BailType::class, $bail);
+       $form->handleRequest($request);
+         
+        if ($form->isSubmitted() && $form->isValid()) {
+         
+            $bail = $form->getData();
+         
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($bail);
+            $entityManager->flush();
+         
+            return $this->render('bail/consulter.html.twig', ['bail' => $bail,]);
+        }
+        else{
+            return $this->render('bail/ajouter.html.twig', array('form' => $form->createView(),));
+        }
+        
+    }
+
+
 }
