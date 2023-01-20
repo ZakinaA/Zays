@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Appartement;
 use App\Entity\Bail;
+use App\Form\BailType;
 
 class BailController extends AbstractController
 {
