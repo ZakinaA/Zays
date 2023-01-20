@@ -22,5 +22,5 @@ bauxLister:
 
 
 paiementMoisLister:
-    path: /paiement/listerMois/{id} #identifiant du mois de la table moisAnnee
+    path: /paiement/lister/mois/{id} #identifiant du mois de la table moisAnnee
     controller: App\Controller\PaiementController::listerLoyersMois
