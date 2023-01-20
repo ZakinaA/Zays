@@ -31,13 +31,17 @@
     
 
     {% for p in bail.paiements %}
-    
+    {% set montantV = 0 %}
+    {% set montantC = 0 %}
+    {% set somme = 0 %}
     <tr>
                 
         <td>{{ p.dateP|date("m/Y") }}</td>
-        <td> {% if p.source == null %} {{ p.montant }} {% endif %} </td>
-        <td> {% if "CAF" in p.source %} {{p.montant}} {% endif %} </td>
-        <td>  </td>
+        <td> {% if p.source == null %} {{ p.montant }} {% set montantV = p.montant %} {% endif %} </td>
+        <td> {% if "CAF" in p.source %} {{p.montant}} {% set montantC = p.montant %} {% endif %} </td>
+        <td> {% set somme = montantV + montantC %} {{somme}} </td>
+        <td> </td>
+        <td> </td>
 
 
     </tr>
