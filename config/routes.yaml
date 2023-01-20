@@ -8,3 +8,7 @@ controllers:
 bauxLister:
     path: /baux/lister
     controller: App\Controller\BailController::listerBaux
+
+bailAjouter:
+    path: /baux/ajouter
+    controller: App\Controller\BailController::ajouterBail
