@@ -13,7 +13,9 @@
 <br/>
 
 
-<h3>Loyers de {{bail.locataires[0].nom}} {{bail.locataires[0].prenom}} {% if bail.locataires[1].nom is defined and bail.locataires[1] !='' %} et {{bail.locataires[1].nom}} {{bail.locataires[1].prenom}} {% endif %} </h3>
+<h3>Loyers du {{mois.dateMoisAnnee|date("m/Y")}} </h3>
+
+<br/>
 
 <div class="tab">
 <table class="table text-sm mb-0 table-striped">
@@ -38,7 +40,7 @@
     {% set somme = 0 %}
     <tr>
                 
-        <td>{{p.bail.appartement.porte}}</td>
+        <td>{{}}</td>
         <td> </td>
         <td> </td>
         <td> </td>
