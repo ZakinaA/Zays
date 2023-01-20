@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Bail;
+use App\Entity\Locataire;
+use App\Entity\Appartement;
+use App\Entity\Associe;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType; 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
@@ -19,21 +23,21 @@ class BailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dateDebut', DateType::class, array('label'=>'  '))
-            ->add('montantHC', NumberType::class, array('label'=>'  '))
-            ->add('montantCharges', NumberType::class, array('label'=>'  '))
-            ->add('montantCaution', NumberType::class, array('label'=>'  '))
-            ->add('nomCaution1', TextType::class, array('label'=>'  '))
-            ->add('nomCaution2', TextType::class, array('label'=>'  '))
-            ->add('dateFin', DateType::class, array('label'=>'  '))
-            ->add('dureeBail', TextType::class, array('label'=>'  '))
-            ->add('bailSigne', TextType::class, array('label'=>'  '))
-            ->add('etatLieuEntree', TextType::class, array('label'=>'  '))
-            ->add('etatLieuSortie', TextType::class, array('label'=>'  '))
-            ->add('attestationAssurance', TextType::class, array('label'=>'  '))
-            ->add('montantPremEcheance', NumberType::class, array('label'=>'  '))
-            ->add('montantDerEcheance', NumberType::class, array('label'=>'  '))
-            ->add('archive', IntegerType::class, array('label'=>'  '))
+            ->add('dateDebut', DateType::class, ['label'=>false])
+            ->add('montantHC', NumberType::class, ['label'=>false])
+            ->add('montantCharges', NumberType::class, ['label'=>false])
+            ->add('montantCaution', NumberType::class, ['label'=>false])
+            ->add('nomCaution1', TextType::class, ['label'=>false])
+            ->add('nomCaution2', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('dateFin', DateType::class, ['label'=>false, 'required'=>false])
+            ->add('dureeBail', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('bailSigne', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('etatLieuEntree', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('etatLieuSortie', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('attestationAssurance', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('montantPremEcheance', NumberType::class, ['label'=>false, 'required'=>false])
+            ->add('montantDerEcheance', NumberType::class, ['label'=>false, 'required'=>false])
+            ->add('archive', IntegerType::class, ['label'=>false, 'required'=>false])
             ->add('appartement', EntityType::class, array('class'=>'App\Entity\Appartement',
                                                     'choice_label'=>
                                                                     function ($appart) {
@@ -50,7 +54,7 @@ class BailType extends AbstractType
                                                                     $nom= $asso->getNom();
                                                                     return strtoupper($nom)." ".$prenom;
                                                                 }, 
-                                                'label'=>'  '))
+                                                'label'=>'  ', 'required'=>false))
             
             
             ->add('locataires', EntityType::class, array('class'=>'App\Entity\Locataire',
@@ -60,7 +64,7 @@ class BailType extends AbstractType
                                                                         $nom= $loc->getNom();
                                                                         return strtoupper($nom)." ".$prenom;
                                                                     }, 
-                                                    'label'=>'  '))
+                                                    'label'=>'  ', 'multiple'=>true))
         ;
     }
 
