@@ -64,7 +64,7 @@ class BailType extends AbstractType
                                                                         $nom= $loc->getNom();
                                                                         return strtoupper($nom)." ".$prenom;
                                                                     }, 
-                                                    'label'=>'  ', 'multiple'=>true))
+                                                    'label'=>'  ', 'multiple'=>true, 'required'=>false))
         ;
     }
 
