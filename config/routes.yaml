@@ -8,3 +8,19 @@ controllers:
 bauxLister:
     path: /baux/lister
     controller: App\Controller\BailController::listerBaux
+
+
+
+
+
+
+
+
+
+
+
+
+
+paiementMoisLister:
+    path: /paiement/listerMois/{id} #identifiant du mois de la table moisAnnee
+    controller: App\Controller\PaiementController::listerLoyersMois
