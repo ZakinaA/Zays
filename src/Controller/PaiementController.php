@@ -15,4 +15,34 @@ class PaiementController extends AbstractController
             'controller_name' => 'PaiementController',
         ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Fonction pour récupérer la liste des loyers pour un mois donné à partir de l'id de la table MoisAnnee
+
+    public function listerLoyersMois(ManagerRegistry $doctrine, int $id){
+
+        $mois = $doctrine->getRepository(MoisAnnee::class)->getById($id);
+
+        return $this->render('paiement/listerMois.html.twig', [
+            'mois' => $mois,]);	
+    }
+
+
+
+
+
+
+
 }
