@@ -33,7 +33,7 @@ class PaiementController extends AbstractController
 
     public function listerLoyersMois(ManagerRegistry $doctrine, int $id){
 
-        $mois = $doctrine->getRepository(MoisAnnee::class)->getById($id);
+        $mois = $doctrine->getRepository(MoisAnnee::class)->find($id);
 
         return $this->render('paiement/listerMois.html.twig', [
             'mois' => $mois,]);	
