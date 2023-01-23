@@ -8,3 +8,10 @@ controllers:
 bauxLister:
     path: /baux/lister
     controller: App\Controller\BailController::listerBaux
+
+
+# Appartement
+
+appartementConsulter:
+    path: /appartement/consulter/{id}  # numéro de porte de l'appartement
+    controller: App\Controller/AppartementController::consulterAppartement
