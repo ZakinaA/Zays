@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block style %}
+.tabAppart{
+    text-align:left;
+    width:40%;
+}  
+
+{% endblock %}
+
+{% block title %} Fiche d'appartement {% endblock %}
+
+{% block contenu %}
+<br />    
+<h3>Information de l'Appartement n° de porte {{appart.porte}}</h3>
+<br />
+	
+<div class="tabAppart">
+  	<table class="table text-sm mb-0 table-striped">
+
+      <tr>
+    	  <th scope="row">Surface : </th><td>{{appart.surface}}</td></tr></tr>
+      <tr>
+
+      <tr>
+          <th scope="row"> Surface au sol : </th><td>{{appart.surfaceSol}}</td></tr></tr>
+      <tr>
+
+ 
+    </table>
+</div>
+{% endblock %}
