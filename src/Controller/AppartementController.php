@@ -20,4 +20,11 @@ class AppartementController extends AbstractController
     }
 
 
+    public function consulterAppartement(ManagerRegistry $doctrine, int $id){
+
+        $appart = $doctrine->getRepository(Appartement::class)->findByPorte($id);
+
+        return $this->render('appartement/consulter.html.twig',[
+            'appart'=>$appart,]);
+    }
 }
