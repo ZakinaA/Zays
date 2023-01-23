@@ -13,5 +13,5 @@ bauxLister:
 # Appartement
 
 appartementConsulter:
-    path: /appartement/consulter/{id}  # numéro de porte de l'appartement
+    path: /appartement/consulter/{id}  # id de l'appartement
     controller: App\Controller\AppartementController::consulterAppartement
