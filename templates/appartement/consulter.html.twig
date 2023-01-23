@@ -11,22 +11,57 @@
 
 {% block contenu %}
 <br />    
-<h3>Information de l'Appartement n° de porte {{appart.porte}}</h3>
+<h2>Information de l'Appartement n° de porte {{appart.porte}}</h2>
 <br />
-	
-<div class="tabAppart">
-  	<table class="table text-sm mb-0 table-striped">
 
-      <tr>
-    	  <th scope="row">Surface : </th><td>{{appart.surface}}</td></tr></tr>
-      <tr>
+<div class="row">
+<div class="col-lg-6">
+    <div class ="card">
+        <div class="card-header border-bottom">
+            <h3>Surface</h3>
+            <br/><p> {{appart.surface}} m² </p>
+        </div>
 
-      <tr>
-          <th scope="row"> Surface au sol : </th><td>{{appart.surfaceSol}}</td></tr></tr>
-      <tr>
+
+        <div class="card-header border-bottom">
+            <h3>Surface au sol</h3>
+            <br/><p> {{appart.surfaceSol}} m² </p>
+        </div>
+
+        <div class="card-header border-bottom">
+            <h3>Situation</h3>
+            <br/><p> {{appart.situation}} </p>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class ="card">
+        <div class="card-header border-bottom">
+            <h3>Equipements</h3>
+            <br/><p> {{appart.equipements}} </p>
+        </div>
 
         
- 
-    </table>
+        <div class="card-header border-bottom">
+            <h3>Travaux</h3>
+            <br/><p> {{appart.travaux}} </p>
+        </div>
+
+
+        {% if appart.ventilation != "null"%}
+
+        <div class="card-header border-bottom">
+            <h3>Information sur la ventilation</h3>
+            <br/><p> {{appart.ventilation}} </p>
+        </div>
+
+        {% endif %}
+
+    </div>
 </div>
+</div>
+
+
 {% endblock %}
