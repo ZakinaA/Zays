@@ -23,21 +23,7 @@ class BailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dateDebut', DateType::class, ['label'=>false])
-            ->add('montantHC', NumberType::class, ['label'=>false])
-            ->add('montantCharges', NumberType::class, ['label'=>false])
-            ->add('montantCaution', NumberType::class, ['label'=>false])
-            ->add('nomCaution1', TextType::class, ['label'=>false])
-            ->add('nomCaution2', TextType::class, ['label'=>false, 'required'=>false])
-            ->add('dateFin', DateType::class, ['label'=>false, 'required'=>false])
-            ->add('dureeBail', TextType::class, ['label'=>false, 'required'=>false])
-            ->add('bailSigne', TextType::class, ['label'=>false, 'required'=>false])
-            ->add('etatLieuEntree', TextType::class, ['label'=>false, 'required'=>false])
-            ->add('etatLieuSortie', TextType::class, ['label'=>false, 'required'=>false])
-            ->add('attestationAssurance', TextType::class, ['label'=>false, 'required'=>false])
-            ->add('montantPremEcheance', NumberType::class, ['label'=>false, 'required'=>false])
-            ->add('montantDerEcheance', NumberType::class, ['label'=>false, 'required'=>false])
-            ->add('archive', IntegerType::class, ['label'=>false, 'required'=>false])
+            
             ->add('appartement', EntityType::class, array('class'=>'App\Entity\Appartement',
                                                     'choice_label'=>
                                                                     function ($appart) {
@@ -45,6 +31,16 @@ class BailType extends AbstractType
                                                                         return strtoupper($porte);
                                                                     }, 
                                                     'label'=>'  '))
+        
+        
+            ->add('dateDebut', DateType::class, ['label'=>false])
+            ->add('montantHC', NumberType::class, ['label'=>false])
+            ->add('montantCharges', NumberType::class, ['label'=>false])
+            ->add('montantCaution', NumberType::class, ['label'=>false])
+            ->add('nomCaution1', TextType::class, ['label'=>false])
+            ->add('nomCaution2', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('dureeBail', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('montantPremEcheance', NumberType::class, ['label'=>false, 'required'=>false])
             
             
             ->add('associe', EntityType::class, array('class'=>'App\Entity\Associe',
@@ -56,7 +52,7 @@ class BailType extends AbstractType
                                                                 }, 
                                                 'label'=>'  ', 'required'=>false))
             
-            
+/*            
             ->add('locataires', EntityType::class, array('class'=>'App\Entity\Locataire',
                                                     'choice_label'=>
                                                                     function ($loc) {
@@ -65,8 +61,10 @@ class BailType extends AbstractType
                                                                         return strtoupper($nom)." ".$prenom;
                                                                     }, 
                                                     'label'=>'  ', 'multiple'=>true, 'required'=>false))
+*/
         ;
     }
+
 
     public function configureOptions(OptionsResolver $resolver): void
     {
