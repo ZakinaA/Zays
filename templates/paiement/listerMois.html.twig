@@ -37,8 +37,8 @@ text-align:center;
             
     <td> {{p.bail.appartement.porte}}</td>
     <td>{{p.bail.locataires[0].nom}} {{p.bail.locataires[0].prenom}}</td>
-    <td> {% if p.source != "CAF" %} {{p.montant}} {% endif %} </td>
-    <td> {% if p.source == "CAF" %} {{p.montant}} {% endif %} </td>
+    <td> {% if p.source == null %} {{ p.montant }} € {% set montantV = p.montant %} {% endif %} </td>
+    <td> {% if "CAF" in p.source %} {{p.montant}} € {% set montantC = p.montant %} {% endif %} </td>
     <td></td>
     <td></td>
     <td></td>
