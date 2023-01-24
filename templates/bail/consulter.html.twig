@@ -30,7 +30,7 @@
 
           <div class="card-header border-bottom">
               <h3>Numéro de porte d'appartement</h3>
-              <br/><a href=""><p> {{bail.appartement.porte}} </a></p>
+              <br/><a href="{{ path('appartementConsulter', { 'id': bail.appartement.id }) }}"><p> {{bail.appartement.porte}} </a></p>
           </div>
 
           <div class="card-header border-bottom">
