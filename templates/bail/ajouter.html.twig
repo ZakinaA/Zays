@@ -7,126 +7,87 @@
 <div class="card-body">
     
     {{ form_start(form) }}
-<br/>
-    <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="dateDebut">Date de début</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="montantHC">Montant HC</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.montantHC, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="montantCharges">Montant des charges</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.montantCharges, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="montantCaution">Montant de la caution</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.montantCaution, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>   
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="nomCaution1">Nom de la première caution</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.nomCaution1, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="nomCaution2">Nom de la seconde caution</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.nomCaution2, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
+
 
 <br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="dureeBail">Durée du bail</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.dureeBail, {'attr': {'class': 'form-control'}}) }}
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_widget(form.appartement, {'attr': {'class': 'form-control'}}) }}
         </div>
-
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="etatLieuEntree">Etat du lieu à l'entrée</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.etatLieuEntree, {'attr': {'class': 'form-control'}}) }}
-            </div>
+        <div class="col-md-6">
+            {{ form_widget(form.locataires) }}
         </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="etatLieuSortie">Etat du lieu à la sortie</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.etatLieuSortie, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="attestationAssurance">Attestation d'assurance</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.attestationAssurance, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="montantPremEcheance">Montant de la première échéance</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.montantPremEcheance, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="montantDerEcheance">Montant de la dernière échéance</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.montantDerEcheance, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="archive">Archivé</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.archive, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="appartement">Appartement</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.appartement, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="associe">Associé</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.associe, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="locataires">Locataires</label>
-            <div class="col-sm-10">
-                {{ form_widget(form.locataires, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-<br/>
-        <div class="form-group row">
-            <div class="col-sm-10 offset-sm-2">
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
-        </div>
-        {{ form_end(form) }}
     </div>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_widget(form.montantHC, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_widget(form.montantCharges, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_widget(form.montantCaution, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_widget(form.nomCaution1, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_widget(form.nomCaution2, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_widget(form.dureeBail, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_widget(form.bailSigne, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_widget(form.etatLieuEntree, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_widget(form.etatLieuSortie, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_widget(form.attestationAssurance, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div
+
+
+
+div class="col-md-3">
+{{ form_widget(form.montantPremEcheance, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="col-md-3">
+{{ form_widget(form.montantDerEcheance, {'attr': {'class': 'form-control'}}) }}
+</div>
+</div>
+<div class="row">
+<div class="col-md-3">
+{{ form_widget(form.archive, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="col-md-3">
+{{ form_widget(form.associe, {'attr': {'class': 'form-control'}}) }}
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 text-center">
+<input type="submit" value="Enregistrer" class="btn btn-primary">
+</div>
+</div>
+{{ form_rest(form) }}
+
+</div>
+
 {% endblock %}

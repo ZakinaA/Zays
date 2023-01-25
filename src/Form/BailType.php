@@ -6,6 +6,7 @@ use App\Entity\Bail;
 use App\Entity\Locataire;
 use App\Entity\Appartement;
 use App\Entity\Associe;
+use App\Form\LocataireType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -57,14 +58,7 @@ class BailType extends AbstractType
                                                 'label'=>'  ', 'required'=>false))
             
             
-            ->add('locataires', EntityType::class, array('class'=>'App\Entity\Locataire',
-                                                    'choice_label'=>
-                                                                    function ($loc) {
-                                                                        $prenom= $loc->getPrenom();
-                                                                        $nom= $loc->getNom();
-                                                                        return strtoupper($nom)." ".$prenom;
-                                                                    }, 
-                                                    'label'=>'  ', 'multiple'=>true, 'required'=>false))
+            ->add('locataires', LocataireType::class, ['label'=>false, 'required'=>false])
         ;
     }
 
