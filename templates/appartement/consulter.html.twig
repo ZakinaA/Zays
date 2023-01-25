@@ -1,4 +1,10 @@
 {% extends 'base.html.twig' %}
+{% block style %}
+.tab{
+    text-align:center;
+}  
+
+{% endblock %}
 
 {% block title %} Fiche d'appartement {% endblock %}
 
@@ -56,6 +62,42 @@
 
                     {% endif %}
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class ="card">
+                    <div class="card-header border-bottom">
+                        <h3>Locataires</h3>
+                        
+                            <div class="tab">
+                                <table class="table text-sm mb-0 table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%" scope="col">Nom</th>
+                                            <th width="15%" scope="col">Prénom</th>
+                                            <th scope="col">Numéro de bail</th>
+                                        </tr>
+                                    </thead>
+                                
+                                    {% for b in appart.bails %}
+                                
+                                        <tr>
+                                            <td>{{b.locataires[0].nom}} {% if b.locataires[1] is defined %}{{b.locataires[1].nom}}{% endif %} </td>                                            
+                                            <td>{{b.locataires[0].prenom}} {% if b.locataires[1] is defined %}{{b.locataires[1].prenom}}{% endif %} </td>                                            
+                                            <td><a href="">{{ b.id }}</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        
+
+                    </div>
                 </div>
             </div>
         </div>
