@@ -12,3 +12,15 @@ bauxLister:
 bauxConsulter:
     path: /baux/consulter/{id} #id du bail
     controller: App\Controller\BailController::consulterBail
+
+
+
+
+
+
+
+# Paiement
+
+paiementLocLister:
+    path: /paiement/lister/loc/{id} #id du bail
+    controller: App\Controller\PaiementController::listerPaiementsLoc
