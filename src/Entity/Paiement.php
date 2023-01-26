@@ -26,6 +26,12 @@ class Paiement
     #[ORM\ManyToOne(inversedBy: 'paiements')]
     private ?MoisAnnee $moisAnnee = null;
 
+    #[ORM\Column(length: 5, nullable: true)]
+    private ?string $CAF = null;
+
+    #[ORM\ManyToOne(inversedBy: 'paiements')]
+    private ?Mouvement $mouvement = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +81,30 @@ class Paiement
     public function setMoisAnnee(?MoisAnnee $moisAnnee): self
     {
         $this->moisAnnee = $moisAnnee;
+
+        return $this;
+    }
+
+    public function getCAF(): ?string
+    {
+        return $this->CAF;
+    }
+
+    public function setCAF(?string $CAF): self
+    {
+        $this->CAF = $CAF;
+
+        return $this;
+    }
+
+    public function getMouvement(): ?Mouvement
+    {
+        return $this->mouvement;
+    }
+
+    public function setMouvement(?Mouvement $mouvement): self
+    {
+        $this->mouvement = $mouvement;
 
         return $this;
     }
