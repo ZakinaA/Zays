@@ -20,9 +20,6 @@ class Paiement
     #[ORM\Column(nullable: true)]
     private ?float $montant = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $source = null;
-
     #[ORM\ManyToOne(inversedBy: 'paiements')]
     private ?Bail $bail = null;
 
@@ -54,18 +51,6 @@ class Paiement
     public function setMontant(?float $montant): self
     {
         $this->montant = $montant;
-
-        return $this;
-    }
-
-    public function getSource(): ?string
-    {
-        return $this->source;
-    }
-
-    public function setSource(?string $source): self
-    {
-        $this->source = $source;
 
         return $this;
     }
