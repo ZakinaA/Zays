@@ -9,9 +9,26 @@ bauxLister:
     path: /baux/lister
     controller: App\Controller\BailController::listerBaux
 
-
+bauxConsulter:
+    path: /baux/consulter/{id} #id du bail
+    controller: App\Controller\BailController::consulterBail
+    
 # Appartement
 
 appartementConsulter:
     path: /appartement/consulter/{id}  # id de l'appartement
     controller: App\Controller\AppartementController::consulterAppartement
+
+
+
+
+
+
+
+
+# Paiement
+
+paiementLocLister:
+    path: /paiement/lister/loc/{id} #id du bail
+    controller: App\Controller\PaiementController::listerPaiementsLoc
+    
