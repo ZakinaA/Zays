@@ -53,4 +53,76 @@ class BailController extends AbstractController
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Générer le PDF pour un bail donné
+    public function genererBailPDF(ManagerRegistry $doctrine, int $id){
+
+        $bail = $doctrine->getRepository(Bail::class)->find($id);
+
+        if (!$bail) {
+            throw $this->createNotFoundException(
+            'Aucun bail trouvé'
+            );
+        }
+
+        // Instanciation de la librairie DOMPDF
+        $dompdf = new Dompdf();
+
+        // Contenu HTML
+        $html = $this->renderView('bail/pdf.html.twig', [
+            'bail' => $bail
+        ]);
+
+        // Chargement du contenu HTML
+        $dompdf->loadHtml($html);
+
+        // Configuration des options
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Rendu du PDF
+        $dompdf->render();
+
+        // Envoi du PDF dans la réponse
+        $dompdf->stream("bail_".$bail->getId().".pdf", [
+            "Attachment" => false
+        ]);
+    }
+
 }
