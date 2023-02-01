@@ -12,6 +12,10 @@ bauxLister:
 bauxConsulter:
     path: /baux/consulter/{id} #id du bail
     controller: App\Controller\BailController::consulterBail
+
+bauxPDF:
+    path: /baux/{id}/pdf #id du bail
+    controller: App\Controller\BailController::genererBailPDF
     
 # Appartement
 

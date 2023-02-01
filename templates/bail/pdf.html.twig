@@ -8,11 +8,11 @@
     <h1>Contrat de bail</h1>
     <p>Le présent contrat est conclu entre les parties suivantes :</p>
     <ul>
-      <li>Locataire(s) : {{ bail.locataires[0].nom }} {{bail.locataires[0].prenom}} {% if bail.locataires[1] is defined and not null %} et {{bail.locataires[1].nom}} {{bail.locataires[1].prenom}} </li>
-      <li>Bailleur : {{ bail. }}</li>
+      <li>Locataire(s) : {{ bail.locataires[0].nom }} {{bail.locataires[0].prenom}} {% if bail.locataires[1] is defined and not null %} et {{bail.locataires[1].nom}} {{bail.locataires[1].prenom}} {% endif %} </li>
+      <li>Bailleur : {{ bail.associe.societe.nom }}</li>
     </ul>
-    <p>Concernant l'appartement situé à l'adresse suivante : {{ bail.appartement.adresse }}</p>
-    <p>Le contrat prend effet à partir du {{ bail.debut | date("d/m/Y") }} et se termine le {{ bail.fin | date("d/m/Y") }}.</p>
-    <p>Le loyer mensuel est de {{ bail.loyer }} €.</p>
+    <p>Concernant l'appartement situé à l'adresse suivante : {{ bail.appartement.immeuble.numRue }} {{bail.appartement.immeuble.rue}} , {{bail.appartement.immeuble.copos}} {{bail.appartement.immeuble.ville}} </p>
+    <p>Le contrat prend effet à partir du {{ bail.dateDebut|date("d/m/Y") }}.</p>
+    <p>Le loyer mensuel est de {{ bail.montantHC + bail.montantCharges }} €.</p>
   </body>
 </html>
