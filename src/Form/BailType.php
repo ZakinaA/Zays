@@ -26,12 +26,12 @@ class BailType extends AbstractType
         $builder
             ->add('dateDebut', DateType::class, ['label'=>false])
             ->add('montantHC', NumberType::class, ['label'=>false])
-            ->add('montantCharges', NumberType::class, ['label'=>false])
+            ->add('montantCharges', NumberType::class, ['data'=>30, 'label'=>false])
             ->add('montantCaution', NumberType::class, ['label'=>false])
             ->add('nomCaution1', TextType::class, ['label'=>false])
             ->add('nomCaution2', TextType::class, ['label'=>false, 'required'=>false])
             ->add('dateFin', DateType::class, ['label'=>false, 'required'=>false])
-            ->add('dureeBail', TextType::class, ['label'=>false, 'required'=>false])
+            ->add('dureeBail', TextType::class, ['data'=>"6 ans", 'label'=>false, 'required'=>false])
             ->add('bailSigne', TextType::class, ['label'=>false, 'required'=>false])
             ->add('etatLieuEntree', TextType::class, ['label'=>false, 'required'=>false])
             ->add('etatLieuSortie', TextType::class, ['label'=>false, 'required'=>false])
@@ -58,8 +58,8 @@ class BailType extends AbstractType
                                                 'label'=>'  ', 'required'=>false))
             
             
-            ->add('locataires', LocataireType::class, ['label'=>false, 'required'=>false])
-        ;
+            ->add('locataires', CollectionType::class, ['entry_type' => LocataireType::class,
+                                                'entry_options' => ['label' => false],])        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

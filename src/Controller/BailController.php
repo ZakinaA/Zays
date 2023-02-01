@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Appartement;
 use App\Entity\Bail;
+use App\Entity\Locataire;
 use App\Form\BailType;
 
 class BailController extends AbstractController
@@ -58,8 +59,17 @@ class BailController extends AbstractController
 
     public function ajouterBail(Request $request, ManagerRegistry $doctrine){
         $bail = new Bail();
+
+        $locataire = new Locataire();
+        $locataire->setNom(null);
+        $locataire->setPrenom(null);
+        $locataire->setDateNaissance(null);
+        $locataire->setLieuNaissance(null);
+        $bail->getLocataires()->add($locataire);
+        
+
         $form = $this->createForm(BailType::class, $bail);
-       $form->handleRequest($request);
+        $form->handleRequest($request);
          
         if ($form->isSubmitted() && $form->isValid()) {
          

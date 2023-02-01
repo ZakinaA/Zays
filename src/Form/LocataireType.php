@@ -22,7 +22,7 @@ class LocataireType extends AbstractType
         $builder
         ->add('nom', TextType::class, ['label'=>false])
         ->add('prenom', TextType::class, ['label'=>false])
-        ->add('dateNaissance', DateType::class, ['label'=>false])
+        ->add('dateNaissance', DateType::class, ['years' => range(1900, date('Y')), 'label'=>false])
         ->add('lieuNaissance', TextType::class, ['label'=>false])
         ->add('montantCaf', NumberType::class, ['label'=>false])
         ;

@@ -4,90 +4,98 @@
 {% block title %} Ajouter un nouveau bail {% endblock %}
 
 {% block contenu %} 
-<div class="card-body">
-    
-    {{ form_start(form) }}
 
+{{ form_start(form) }}
 
-<br/>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_widget(form.appartement, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_widget(form.locataires) }}
+<section class="pb-5"> 
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-sm"><b>Ajout d'un nouveau bail :</b></p>
+
+                          
+                            <div class="mb-3">
+                                <label class="form-label">Numéro d'appartement</label>
+                                <div class="form-row"> {{form_row(form.appartement)}} </div>
+                            </div>
+                          
+                            {% for locataire in form.locataires %}
+
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Nom locataire</label>
+                                <div class="form-row"> {{form_row(locataire.nom)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Prénom locataire</label>
+                                <div class="form-row"> {{form_row(locataire.prenom)}} </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Date de naissance locataire</label>
+                                <div class="form-row"> {{form_row(locataire.dateNaissance)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Lieu de naissance locataire</label>
+                                <div class="form-row"> {{form_row(locataire.lieuNaissance)}} </div>
+                            </div>
+
+                            {% endfor %}
+
+                            <div class="mb-3">
+                                <label class="form-label">Date de début du bail</label>
+                                <div class="form-row"> {{form_row(form.dateDebut)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Montant Hors Charges</label>
+                                <div class="form-row"> {{form_row(form.montantHC)}} </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Montant Charges</label>
+                                <div class="form-row"> {{form_row(form.montantCharges)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Montant première échéance</label>
+                                <div class="form-row"> {{form_row(form.montantPremEcheance)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Montant Caution</label>
+                                <div class="form-row"> {{form_row(form.montantCaution)}} </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Cautionneur 1</label>
+                                <div class="form-row"> {{form_row(form.nomCaution1)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Cautionneur 2 (si existant) </label>
+                                <div class="form-row"> {{form_row(form.nomCaution2)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Durée du bail</label>
+                                <div class="form-row"> {{form_row(form.dureeBail)}} </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Ajouter</button>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-3">
-            {{ form_widget(form.montantHC, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-3">
-            {{ form_widget(form.montantCharges, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-3">
-            {{ form_widget(form.montantCaution, {'attr': {'class': 'form-control'}}) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_widget(form.nomCaution1, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_widget(form.nomCaution2, {'attr': {'class': 'form-control'}}) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-3">
-            {{ form_widget(form.dureeBail, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-3">
-            {{ form_widget(form.bailSigne, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-3">
-            {{ form_widget(form.etatLieuEntree, {'attr': {'class': 'form-control'}}) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            {{ form_widget(form.etatLieuSortie, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="col-md-3">
-            {{ form_widget(form.attestationAssurance, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div
+</section>                        
 
-
-
-div class="col-md-3">
-{{ form_widget(form.montantPremEcheance, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="col-md-3">
-{{ form_widget(form.montantDerEcheance, {'attr': {'class': 'form-control'}}) }}
-</div>
-</div>
-<div class="row">
-<div class="col-md-3">
-{{ form_widget(form.archive, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="col-md-3">
-{{ form_widget(form.associe, {'attr': {'class': 'form-control'}}) }}
-</div>
-</div>
-<div class="row">
-<div class="col-md-12 text-center">
-<input type="submit" value="Enregistrer" class="btn btn-primary">
-</div>
-</div>
-{{ form_rest(form) }}
-
-</div>
+{{ form_end(form) }}
 
 {% endblock %}
