@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %} Ajouter un nouveau bail {% endblock %}
+
+{% block contenu %} 
+
+{{ form_start(form) }}
+
+<section class="pb-5"> 
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-sm"><b>Ajout d'un nouveau bail :</b></p>
+
+                          
+                            <div class="mb-3">
+                                <label class="form-label">Numéro d'appartement</label>
+                                <div class="form-row"> {{form_row(form.appartement)}} </div>
+                            </div>
+                          
+                            {% for locataire in form.locataires %}
+
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Nom locataire</label>
+                                <div class="form-row"> {{form_row(locataire.nom)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Prénom locataire</label>
+                                <div class="form-row"> {{form_row(locataire.prenom)}} </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Date de naissance locataire</label>
+                                <div class="form-row"> {{form_row(locataire.dateNaissance)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Lieu de naissance locataire</label>
+                                <div class="form-row"> {{form_row(locataire.lieuNaissance)}} </div>
+                            </div>
+
+                            {% endfor %}
+
+                            <div class="mb-3">
+                                <label class="form-label">Date de début du bail</label>
+                                <div class="form-row"> {{form_row(form.dateDebut)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Montant Hors Charges</label>
+                                <div class="form-row"> {{form_row(form.montantHC)}} </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Montant Charges</label>
+                                <div class="form-row"> {{form_row(form.montantCharges)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Montant première échéance</label>
+                                <div class="form-row"> {{form_row(form.montantPremEcheance)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Montant Caution</label>
+                                <div class="form-row"> {{form_row(form.montantCaution)}} </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Cautionneur 1</label>
+                                <div class="form-row"> {{form_row(form.nomCaution1)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Cautionneur 2 (si existant) </label>
+                                <div class="form-row"> {{form_row(form.nomCaution2)}} </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Durée du bail</label>
+                                <div class="form-row"> {{form_row(form.dureeBail)}} </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Ajouter</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>                        
+
+{{ form_end(form) }}
+
+{% endblock %}

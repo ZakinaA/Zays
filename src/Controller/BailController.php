@@ -10,6 +10,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Appartement;
 use App\Entity\Bail;
+use App\Entity\Locataire;
+use App\Form\BailType;
 
 class BailController extends AbstractController
 {
@@ -34,6 +36,39 @@ class BailController extends AbstractController
     }
 
 
+    // Ajout d'un bail à partir d'un formulaire
+
+    public function ajouterBail(Request $request, ManagerRegistry $doctrine){
+        $bail = new Bail();
+
+        $locataire = new Locataire();
+        $locataire->setNom(null);
+        $locataire->setPrenom(null);
+        $locataire->setDateNaissance(null);
+        $locataire->setLieuNaissance(null);
+        $bail->getLocataires()->add($locataire);
+        
+
+        $form = $this->createForm(BailType::class, $bail);
+        $form->handleRequest($request);
+         
+        if ($form->isSubmitted() && $form->isValid()) {
+         
+            $bail = $form->getData();
+         
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($bail);
+            $entityManager->flush();
+         
+            return $this->render('bail/consulter.html.twig', ['bail' => $bail,]);
+        }
+        else{
+            return $this->render('bail/ajouter.html.twig', array('form' => $form->createView(),));
+        }
+        
+    }
+
+
 
     // Retourner les informations d'un bail pour le consulter
 
@@ -51,44 +86,6 @@ class BailController extends AbstractController
             'bail' => $bail,]);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
