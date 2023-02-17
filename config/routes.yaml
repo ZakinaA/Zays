@@ -28,6 +28,10 @@ bauxPDF:
     path: /baux/{id}/pdf #id du bail
     controller: App\Controller\BailController::genererBailPDF
     
+quittancePDF:
+    path: /baux/{id}/quittance #id du bail
+    controller: App\Controller\BailController::genererQuittancePDF
+
 # Appartement
 
 appartementConsulter:
