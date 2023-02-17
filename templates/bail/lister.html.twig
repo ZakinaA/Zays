@@ -35,8 +35,8 @@
     {% for b in baux %}
 
         <tr>
-            <td><a href="">{{ b.appartement.porte }}</a></td>
-            <td><a href="">{{b.locataires[0].nom}} {% if b.locataires[1] is defined %}{{b.locataires[1].nom}}{% endif %}</a> </td>
+            <td><a href="{{ path('appartementConsulter', { 'id': b.appartement.id }) }}">{{ b.appartement.porte }}</a></td>
+            <td><a href="{{ path('bauxConsulter', { 'id': b.id }) }}">{{b.locataires[0].nom}} {% if b.locataires[1] is defined %}{{b.locataires[1].nom}}{% endif %}</a> </td>
             <td>{{ b.montantHC }} {% if b.montantHC != null %}€{% endif %}</td>
             <td>{{ b.montantHC + b.montantCharges }} {% if b.montantHC + b.montantCharges != null %}€{% endif %}</td>
             <td>{{ b.montantCaution }} {% if b.montantCaution != null %}€{% endif %}</td>
