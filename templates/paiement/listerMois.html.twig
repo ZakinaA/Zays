@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block style %}
+.tab{
+text-align:center;
+}
+
+{% endblock %}
+
+{% block title %}Liste des paiements par locataire {% endblock %}
+
+{% block contenu %}
+
+<br/>
+<h3>Loyers du {{mois.dateMoisAnnee|date("m/Y")}} </h3>
+<br/>
+<div class="tab">
+<table class="table text-sm mb-0 table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Appartement</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Versement</th>
+            <th scope="col">CAF</th>
+            <th scope="col">Total versé</th>
+            <th scope="col">Loyer dû</th>
+            <th scope="col">Solde mois</th>
+            <th scope="col">Solde locataire</th>
+        </tr>
+    </thead>
+
+{% for p in mois.paiements %}
+{% set montantV = 0 %}
+{% set montantC = 0 %}
+{% set somme = 0 %}
+
+<tr>
+            
+    <td> {{p.bail.appartement.porte}}</td>
+    <td>{{p.bail.locataires[0].nom}} {{p.bail.locataires[0].prenom}}</td>
+    <td> {% if p.caf == null %} {{ p.montant }} € {% set montantV = p.montant %} {% endif %} </td>
+    <td> {% if p.montant == null %} {{p.caf}} € {% set montantC = p.montant %} {% endif %} </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+</tr>
+
+{% endfor %}
+</table>
+</div>
+{% endblock %}
