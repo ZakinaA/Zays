@@ -10,6 +10,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Appartement;
 use App\Entity\Bail;
+use App\Entity\Locataire;
+use App\Form\BailType;
 
 class BailController extends AbstractController
 {
@@ -34,6 +36,39 @@ class BailController extends AbstractController
     }
 
 
+    // Ajout d'un bail à partir d'un formulaire
+
+    public function ajouterBail(Request $request, ManagerRegistry $doctrine){
+        $bail = new Bail();
+
+        $locataire = new Locataire();
+        $locataire->setNom(null);
+        $locataire->setPrenom(null);
+        $locataire->setDateNaissance(null);
+        $locataire->setLieuNaissance(null);
+        $bail->getLocataires()->add($locataire);
+        
+
+        $form = $this->createForm(BailType::class, $bail);
+        $form->handleRequest($request);
+         
+        if ($form->isSubmitted() && $form->isValid()) {
+         
+            $bail = $form->getData();
+         
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($bail);
+            $entityManager->flush();
+         
+            return $this->render('bail/consulter.html.twig', ['bail' => $bail,]);
+        }
+        else{
+            return $this->render('bail/ajouter.html.twig', array('form' => $form->createView(),));
+        }
+        
+    }
+
+
 
     // Retourner les informations d'un bail pour le consulter
 
@@ -53,84 +88,7 @@ class BailController extends AbstractController
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Générer la quittance sous forme PDF pour un bail donné
+// Générer la quittance sous forme PDF pour un bail donné
     public function genererQuittancePDF(ManagerRegistry $doctrine, int $id){
 
         $bail = $doctrine->getRepository(Bail::class)->find($id);
@@ -146,6 +104,42 @@ class BailController extends AbstractController
 
         // Contenu HTML
         $html = $this->renderView('bail/quittancePdf.html.twig', [
+            'bail' => $bail
+        ]);
+
+        // Chargement du contenu HTML
+        $dompdf->loadHtml($html);
+
+        // Configuration des options
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Rendu du PDF
+        $dompdf->render();
+
+        // Envoi du PDF dans la réponse
+        $dompdf->stream("bail_".$bail->getId().".pdf", [
+            "Attachment" => false
+        ]);
+    }
+
+
+// Générer le PDF pour un bail donné
+    public function genererBailPDF(ManagerRegistry $doctrine, int $id){
+
+        $bail = $doctrine->getRepository(Bail::class)->find($id);
+
+        if (!$bail) {
+            throw $this->createNotFoundException(
+            'Aucun bail trouvé'
+            );
+        }
+
+        // Instanciation de la librairie DOMPDF
+        $dompdf = new Dompdf();
+
+        // Contenu HTML
+        
+        $html = $this->renderView('bail/pdf.html.twig', [
             'bail' => $bail
         ]);
 

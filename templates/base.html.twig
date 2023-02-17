@@ -35,14 +35,14 @@
         <!-- Sidebar Header    -->
         <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="img/avatar-7.jpg" alt="person">
-            <h2 class="h5 text-white text-uppercase mb-0">Nathan Andrews</h2>
-            <p class="text-sm mb-0 text-muted">Web Developer</p>
+          <div class="sidenav-header-inner text-center">            
+            <p class="text-sm mb-0 text-muted">Connecté en tant que :</p>
+            <h2 class="text-sm mb-0">{{app.user.email}}</h2>
           </div>
-          <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href="index.html">
-            <p class="h1 m-0">BD</p></a>
+          <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href="{{path('bauxLister')}}">
+            <p class="h1 m-0">ZAYS</p></a>
         </div>
-        <!-- Sidebar Navigation Menus--><span class="text-uppercase text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Main</span>
+        <!-- Sidebar Navigation Menus--><span class="text-uppercase text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Menu</span>
         <ul class="list-unstyled">                  
 
           
@@ -55,7 +55,7 @@
               </svg>Appartements </a>
             <ul class="collapse list-unstyled " id="exampledropdownDropdown">
               <li><a class="sidebar-link" href="{{asset('baux/lister')}}">Liste des appartements et locataires</a></li>
-
+              <li><a class="sidebar-link" href="{{asset('baux/ajouter')}}">Ajouter un nouveau bail</a></li>
             </ul>
           </li>
         </ul>
@@ -76,15 +76,30 @@
               <div class="d-flex align-items-center"><a class="menu-btn d-flex align-items-center justify-content-center p-2 bg-gray-900" id="toggle-btn" href="#">
                   <svg class="svg-icon svg-icon-sm svg-icon-heavy text-white">
                     <use xlink:href="#menu-1"> </use>
-                  </svg></a><a class="navbar-brand ms-2" href="index.html">
+                  </svg></a><a class="navbar-brand ms-2" href="{{path('bauxLister')}}">
                   <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"><span class="text-white fw-normal text-xs">Société </span><strong class="text-primary text-sm"> ZAYS</strong></div></a></div>
               <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
 
-                <!-- Log out-->
-                <li class="nav-item"><a class="nav-link text-white text-sm ps-0" href="login.html"> <span class="d-none d-sm-inline-block">Logout</span>
+
+              {% if is_granted('ROLE_ADMIN') %}
+                <!-- formulaire inscription (admin seulement) -->
+                <li class="nav-item"><a class="nav-link text-white text-sm ps-0" href="{{path('app_register')}}"> <span class="d-none d-sm-inline-block">Ajouter un utilisateur</span>
                     <svg class="svg-icon svg-icon-xs svg-icon-heavy">
                       <use xlink:href="#security-1"> </use>
                     </svg></a></li>
+              {% endif %}
+
+
+
+                <!-- Déconnexion/mdp (paramètres)    -->
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white text-sm" id="parametres" rel="nofollow" data-bs-target="#" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="d-none d-sm-inline-block ms-2">Paramètres <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2"> <use xlink:href="#disable-1"> </use> </svg></span></a>
+                  <ul class="dropdown-menu dropdown-menu-end mt-sm-3 shadow-sm" aria-labelledby="parametres">
+                    <li><a class="dropdown-item" rel="nofollow" href="{{path('logout')}}"> <span>Se déconnecter</span></a></li>
+                    <li><a class="dropdown-item" rel="nofollow" href="#!"> <span>Changer de mot de passe</span></a></li>
+                  </ul>
+                </li>
+
+
 
               </ul>
             </div>
