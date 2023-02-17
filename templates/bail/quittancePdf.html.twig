@@ -1,0 +1,129 @@
+<html>
+
+    <p align="center">
+        <img
+            src="{{ asset('http://localhost/zays/public/images/zays.png')}}"
+            alt="ZAYS"
+            align="left"
+            width="95"
+            height="73"
+            border="0"
+        />
+        <h2>QUITTANCE DE LOYER</h2>
+    </p>
+    <p align="center">
+        Quittance de loyer pour la période du ………………… au ……………………..
+    </p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid black">
+        <colgroup>
+            <col width="50*"/>
+            <col width="50*"/>
+            <col width="50*"/>
+        </colgroup>
+        <tbody>
+            <tr valign="top">
+                <td width="33%">
+                    <p align="center">
+                        <strong>BAILLEUR</strong>
+                    </p>
+                    <p align="center">
+                        {{bail.appartement.immeuble.societe.nom}}
+                    </p>
+                    <p align="center">
+                        {{bail.appartement.immeuble.societe.numRue}} {{bail.appartement.immeuble.societe.rue}}
+                    </p>
+                    <p align="center">
+                        {{bail.appartement.immeuble.societe.copos}} {{bail.appartement.immeuble.societe.ville}}
+                    </p>
+                    <p align="center">
+                        R.C.S. CAEN 819 317 991
+                    </p>
+                </td>
+                <td width="33%">
+                </td>
+                <td width="33%">
+                    <p align="center">
+                        <strong>LOCATAIRE</strong>
+                    </p>
+                    <p align="center">
+                        {{bail.locataires[0].nom}} {{bail.locataires[0].prenom}}
+                    </p>
+                    <p align="center">
+                        Porte {{bail.appartement.porte}}
+                    </p>
+                    <p align="center">
+                        {{bail.appartement.immeuble.numRue}} {{bail.appartement.immeuble.rue}}
+                    </p>
+                    <p align="center">
+                        {{bail.appartement.immeuble.copos}} {{bail.appartement.immeuble.ville}}
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        Fait à Caen, le {{"now"|date("d/m/Y")}}
+    </p>
+    <p align="center">
+        <strong>Adresse de la location</strong>
+    </p>
+    <p align="center">
+        {{bail.appartement.immeuble.numRue}} {{bail.appartement.immeuble.rue}}
+    </p>
+    <p align="center">
+        Porte {{bail.appartement.porte}}
+    </p>
+    <p align="center">
+        {{bail.appartement.immeuble.copos}} {{bail.appartement.immeuble.ville}}
+    </p>
+    <dl>
+        <dd>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                <thead>
+                  <tr style="background-color: #f2f2f2;">
+                    <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">LIBELLE</th>
+                    <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">MONTANT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Loyer (hors charges)</td>
+                    <td style="border: 1px solid #ccc; padding: 8px;"> {{bail.montantHC}} €</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Provision pour charges</td>
+                    <td style="border: 1px solid #ccc; padding: 8px;"> {{bail.montantCharges}} €</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Somme versée par la CAF le ……………………..</td>
+                    <td style="border: 1px solid #ccc; padding: 8px;"> {{bail.locataires[0].montantCaf}} €</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Somme versée sur le compte de la SCI ZAYS le  .………………..</td>
+                    <td style="border: 1px solid #ccc; padding: 8px;"> {{(bail.montantHC + bail.montantCharges) - bail.locataires[0].montantCaf}} €</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Somme totale reçue</td>
+                    <td style="border: 1px solid #ccc; padding: 8px;"> {{bail.montantHC + bail.montantCharges}} €</td>
+                  </tr>
+                </tbody>
+              </table>
+        </dd>
+    </dl>
+    <p align="justify">
+        Dont quittance, sans préjudice du terme en cours, sous réserve de tous
+        suppléments pouvant être dus en vertu des lois ou conventions applicables
+        et sous réserve de tous les droits et actions du propriétaire, de toutes
+        poursuites qui auraient pu être engagées et de toutes décisions de justice
+        qui auraient pu être obtenues. En cas de congé précédemment donné, cette
+        quittance représenterait l'indemnité d'occupation et ne saurait être
+        considérée comme un titre de location.
+    </p>
+    <p align="justify">
+        Cette quittance annule tous les reçus qui auraient pu être donnés pour
+        acompte versé sur le présent terme, même si ces reçus portent une date
+        postérieure à la date ci-contre. Le paiement de la présente quittance
+        n'emporte pas présomption de paiement des termes antérieurs.
+    </p>
+
+</html>

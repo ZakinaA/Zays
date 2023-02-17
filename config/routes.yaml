@@ -3,6 +3,12 @@ controllers:
     type: attribute
 
 
+# Déconnexion
+
+logout:
+    path: /logout
+    methods: GET
+
 # Bail
 
 bauxLister:
@@ -10,17 +16,34 @@ bauxLister:
     controller: App\Controller\BailController::listerBaux
 
 
+bailAjouter:
+    path: /baux/ajouter
+    controller: App\Controller\BailController::ajouterBail
 
+bauxConsulter:
+    path: /baux/consulter/{id} #id du bail
+    controller: App\Controller\BailController::consulterBail
 
+bauxPDF:
+    path: /baux/{id}/pdf #id du bail
+    controller: App\Controller\BailController::genererBailPDF
+    
+quittancePDF:
+    path: /baux/{id}/quittance #id du bail
+    controller: App\Controller\BailController::genererQuittancePDF
 
+# Appartement
 
+appartementConsulter:
+    path: /appartement/consulter/{id}  # id de l'appartement
+    controller: App\Controller\AppartementController::consulterAppartement
 
+# Paiement
 
-
-
-
-
-
+paiementLocLister:
+    path: /paiement/lister/loc/{id} #id du bail
+    controller: App\Controller\PaiementController::listerPaiementsLoc
+    
 paiementMoisLister:
     path: /paiement/lister/mois/{id} #identifiant du mois de la table moisAnnee
     controller: App\Controller\PaiementController::listerLoyersMois

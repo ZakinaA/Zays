@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 09 jan. 2023 à 14:29
+-- Généré le : lun. 30 jan. 2023 à 09:07
 -- Version du serveur : 8.0.25
 -- Version de PHP : 8.1.13
 
@@ -194,7 +194,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20230104091417', '2023-01-04 09:28:52', 32170),
 ('DoctrineMigrations\\Version20230105091755', '2023-01-05 09:18:30', 2787),
 ('DoctrineMigrations\\Version20230106075429', '2023-01-06 07:54:56', 4824),
-('DoctrineMigrations\\Version20230106092240', '2023-01-06 09:22:51', 2966);
+('DoctrineMigrations\\Version20230106092240', '2023-01-06 09:22:51', 2966),
+('DoctrineMigrations\\Version20230126103810', '2023-01-26 10:38:28', 44765);
 
 -- --------------------------------------------------------
 
@@ -291,15 +292,7 @@ INSERT INTO `mois_annee` (`id`, `date_mois_annee`) VALUES
 (9, '2022-09-01'),
 (10, '2022-10-01'),
 (11, '2022-11-01'),
-(12, '2022-12-01'),
-(13, '2023-01-01'),
-(14, '2023-02-01'),
-(15, '2023-03-01'),
-(16, '2023-04-01'),
-(17, '2023-05-01'),
-(18, '2023-06-01'),
-(19, '2023-07-01'),
-(20, '2023-08-01');
+(12, '2022-12-01');
 
 -- --------------------------------------------------------
 
@@ -577,8 +570,137 @@ CREATE TABLE `paiement` (
   `mois_annee_id` int DEFAULT NULL,
   `date_p` date DEFAULT NULL,
   `montant` double DEFAULT NULL,
-  `source` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `mouvement_id` int DEFAULT NULL,
+  `caf` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `paiement`
+--
+
+INSERT INTO `paiement` (`id`, `bail_id`, `mois_annee_id`, `date_p`, `montant`, `mouvement_id`, `caf`) VALUES
+(1, 7, NULL, '2022-12-07', 292, 5, NULL),
+(2, 3, NULL, '2022-12-07', 103, 6, NULL),
+(3, 5, NULL, '2022-12-06', 400, 7, NULL),
+(4, 4, NULL, '2022-12-06', 370, 8, NULL),
+(5, 1, NULL, '2022-12-06', 320, 9, NULL),
+(6, 2, NULL, '2022-12-06', 380, 10, NULL),
+(7, 6, NULL, '2022-12-05', 122, 14, NULL),
+(8, 7, NULL, '2022-11-07', 292, 25, NULL),
+(9, 5, NULL, '2022-11-07', 400, 27, NULL),
+(10, 4, NULL, '2022-11-07', 370, 28, NULL),
+(11, 6, NULL, '2022-11-07', 122, 29, NULL),
+(12, 3, NULL, '2022-11-07', 103, 30, NULL),
+(13, 1, NULL, '2022-11-07', 320, 31, NULL),
+(14, 2, NULL, '2022-11-07', 380, 32, NULL),
+(15, 3, NULL, '2022-10-07', 103, 47, NULL),
+(16, 4, NULL, '2022-10-07', 370, 48, NULL),
+(17, 5, NULL, '2022-10-06', 400, 49, NULL),
+(18, 7, NULL, '2022-10-06', 292, 50, NULL),
+(19, 1, NULL, '2022-10-06', 320, 51, NULL),
+(20, 2, NULL, '2022-10-06', 380, 52, NULL),
+(21, 6, NULL, '2022-10-03', 122, 60, NULL),
+(22, 5, NULL, '2022-09-06', 400, 65, NULL),
+(23, 1, NULL, '2022-09-06', 320, 66, NULL),
+(24, 2, NULL, '2022-09-06', 380, 67, NULL),
+(25, 4, NULL, '2022-09-05', 370, 68, NULL),
+(26, 7, NULL, '2022-09-05', 248, 69, NULL),
+(27, 6, NULL, '2022-09-05', 109, 70, NULL),
+(28, 3, NULL, '2022-09-05', 177, 72, NULL),
+(29, 5, NULL, '2022-08-08', 400, 88, NULL),
+(30, 7, NULL, '2022-08-08', 210, 89, NULL),
+(31, 2, NULL, '2022-08-08', 380, 90, NULL),
+(32, 6, NULL, '2022-08-05', 118, 91, NULL),
+(33, 3, NULL, '2022-08-03', 193, 97, NULL),
+(34, 4, NULL, '2022-08-03', 370, 98, NULL),
+(35, 1, NULL, '2022-07-29', 610, 101, NULL),
+(36, 5, NULL, '2022-07-06', 400, 108, NULL),
+(37, 2, NULL, '2022-07-06', 380, 109, NULL),
+(38, 7, NULL, '2022-07-05', 210, 110, NULL),
+(39, 6, NULL, '2022-07-05', 118, 112, NULL),
+(40, 4, NULL, '2022-07-05', 370, 113, NULL),
+(41, 3, NULL, '2022-07-04', 193, 121, NULL),
+(42, NULL, NULL, '2022-07-04', 40, 122, NULL),
+(43, 5, NULL, '2022-06-07', 400, 130, NULL),
+(44, 7, NULL, '2022-06-07', 183, 131, NULL),
+(45, 2, NULL, '2022-06-07', 380, 132, NULL),
+(46, 6, NULL, '2022-06-03', 390, 133, NULL),
+(47, 4, NULL, '2022-06-02', 370, 140, NULL),
+(48, 3, NULL, '2022-06-02', 246, 141, NULL),
+(49, NULL, NULL, '2022-05-31', 135, 143, NULL),
+(50, 7, NULL, '2022-05-06', 44, 149, NULL),
+(51, 6, NULL, '2022-05-06', 750, 150, NULL),
+(52, 5, NULL, '2022-05-06', 400, 151, NULL),
+(53, 2, NULL, '2022-05-06', 380, 152, NULL),
+(54, 4, NULL, '2022-05-04', 710, 159, NULL),
+(55, 3, NULL, '2022-05-03', 224, 162, NULL),
+(56, NULL, NULL, '2022-05-03', 135, 163, NULL),
+(57, 2, NULL, '2022-04-30', 51, 164, NULL),
+(59, 5, NULL, '2022-04-06', 400, 173, NULL),
+(60, 2, NULL, '2022-04-06', 329, 174, NULL),
+(61, NULL, NULL, '2022-04-05', 135, 179, NULL),
+(62, 3, NULL, '2022-04-04', 246, 185, NULL),
+(63, 5, NULL, '2022-03-07', 400, 193, NULL),
+(64, 2, NULL, '2022-03-07', 329, 194, NULL),
+(65, 3, NULL, '2022-03-04', 268, 196, NULL),
+(66, NULL, NULL, '2022-03-03', 135, 202, NULL),
+(67, 5, NULL, '2022-02-07', 400, 210, NULL),
+(68, 3, NULL, '2022-02-07', 268, 211, NULL),
+(69, 2, NULL, '2022-02-07', 329, 213, NULL),
+(70, NULL, NULL, '2022-02-02', 135, 222, NULL),
+(71, 5, NULL, '2022-01-06', 400, 230, NULL),
+(72, 3, NULL, '2022-01-06', 186, 231, NULL),
+(73, NULL, NULL, '2022-01-06', 135, 232, NULL),
+(74, 2, NULL, '2022-01-06', 329, 233, NULL),
+(128, 3, NULL, '2022-12-05', NULL, 12, '277'),
+(129, 6, NULL, '2022-12-05', NULL, 13, '268'),
+(130, 7, NULL, '2022-12-05', NULL, 15, '118'),
+(131, 2, NULL, '2022-12-05', NULL, 16, '22'),
+(132, 3, NULL, '2022-11-04', NULL, 33, '277'),
+(133, 6, NULL, '2022-11-04', NULL, 34, '268'),
+(134, 7, NULL, '2022-11-04', NULL, 35, '118'),
+(135, 2, NULL, '2022-11-04', NULL, 36, '22'),
+(136, 3, NULL, '2022-10-05', NULL, 54, '277'),
+(137, 6, NULL, '2022-10-05', NULL, 55, '268'),
+(138, 7, NULL, '2022-10-05', NULL, 56, '118'),
+(139, 2, NULL, '2022-10-05', NULL, 57, '25'),
+(140, 6, NULL, '2022-09-05', NULL, 73, '281'),
+(141, 3, NULL, '2022-09-05', NULL, 74, '203'),
+(142, 7, NULL, '2022-09-05', NULL, 75, '162'),
+(143, 2, NULL, '2022-09-05', NULL, 76, '25'),
+(144, 7, NULL, '2022-08-18', NULL, 80, '21'),
+(145, 3, NULL, '2022-08-18', NULL, 81, '16'),
+(146, 2, NULL, '2022-08-18', NULL, 82, '15'),
+(147, 6, NULL, '2022-08-18', NULL, 83, '9'),
+(148, 6, NULL, '2022-08-05', NULL, 92, '272'),
+(149, 7, NULL, '2022-08-05', NULL, 93, '199'),
+(150, 3, NULL, '2022-08-05', NULL, 94, '187'),
+(151, 2, NULL, '2022-08-05', NULL, 96, '10'),
+(152, 6, NULL, '2022-07-05', NULL, 114, '272'),
+(153, 7, NULL, '2022-07-05', NULL, 115, '199'),
+(154, 3, NULL, '2022-07-05', NULL, 116, '187'),
+(155, 2, NULL, '2022-07-05', NULL, 118, '10'),
+(156, 7, NULL, '2022-06-03', NULL, 134, '227'),
+(157, 3, NULL, '2022-06-03', NULL, 136, '134'),
+(158, 2, NULL, '2022-06-03', NULL, 137, '10'),
+(159, 7, NULL, '2022-05-05', NULL, 154, '227'),
+(160, 3, NULL, '2022-05-05', NULL, 156, '134'),
+(161, 2, NULL, '2022-05-05', NULL, 157, '10'),
+(162, 7, NULL, '2022-04-05', NULL, 177, '227'),
+(163, 3, NULL, '2022-04-05', NULL, 180, '134'),
+(164, 2, NULL, '2022-04-05', NULL, 181, '90'),
+(165, NULL, NULL, '2022-03-04', NULL, 197, '240'),
+(166, 7, NULL, '2022-03-04', NULL, 198, '230'),
+(167, 3, NULL, '2022-03-04', NULL, 200, '112'),
+(168, 2, NULL, '2022-03-04', NULL, 201, '90'),
+(169, 7, NULL, '2022-02-04', NULL, 215, '285'),
+(170, NULL, NULL, '2022-02-04', NULL, 216, '240'),
+(171, 3, NULL, '2022-02-04', NULL, 218, '112'),
+(172, 2, NULL, '2022-02-04', NULL, 219, '90'),
+(173, 7, NULL, '2022-01-05', NULL, 235, '281'),
+(174, NULL, NULL, '2022-01-05', NULL, 236, '250'),
+(175, 2, NULL, '2022-01-05', NULL, 238, '56'),
+(176, 3, NULL, '2022-01-05', NULL, 239, '47');
 
 -- --------------------------------------------------------
 
@@ -803,7 +925,8 @@ ALTER TABLE `mouvement`
 ALTER TABLE `paiement`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_B1DC7A1E3E3F1FE8` (`bail_id`),
-  ADD KEY `IDX_B1DC7A1EB67D0DC3` (`mois_annee_id`);
+  ADD KEY `IDX_B1DC7A1EB67D0DC3` (`mois_annee_id`),
+  ADD KEY `IDX_B1DC7A1EECD1C222` (`mouvement_id`);
 
 --
 -- Index pour la table `piece_jointe`
@@ -852,7 +975,7 @@ ALTER TABLE `associe`
 -- AUTO_INCREMENT pour la table `bail`
 --
 ALTER TABLE `bail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `categorie`
@@ -894,7 +1017,7 @@ ALTER TABLE `mouvement`
 -- AUTO_INCREMENT pour la table `paiement`
 --
 ALTER TABLE `paiement`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT pour la table `piece_jointe`
@@ -967,7 +1090,8 @@ ALTER TABLE `mouvement`
 --
 ALTER TABLE `paiement`
   ADD CONSTRAINT `FK_B1DC7A1E3E3F1FE8` FOREIGN KEY (`bail_id`) REFERENCES `bail` (`id`),
-  ADD CONSTRAINT `FK_B1DC7A1EB67D0DC3` FOREIGN KEY (`mois_annee_id`) REFERENCES `mois_annee` (`id`);
+  ADD CONSTRAINT `FK_B1DC7A1EB67D0DC3` FOREIGN KEY (`mois_annee_id`) REFERENCES `mois_annee` (`id`),
+  ADD CONSTRAINT `FK_B1DC7A1EECD1C222` FOREIGN KEY (`mouvement_id`) REFERENCES `mouvement` (`id`);
 
 --
 -- Contraintes pour la table `piece_jointe`
