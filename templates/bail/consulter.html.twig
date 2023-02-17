@@ -2,7 +2,12 @@
 
 {% block title %} Fiche du bail {% endblock %}
 
-{% block titrePage %} Information du bail {% endblock %}
+
+{% block titrePage %} Information du bail 
+
+<h4 align="right"><a href="{{ path('bauxPDF', { 'id': bail.id }) }}"> Générer le contrat de bail </a></h4>
+
+{% endblock %}
 
 
 {% block contenu %}
