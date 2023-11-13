@@ -12,52 +12,63 @@
 
 <br/>
 
-
-<h3>Listes des appartements</h3>
-
-<div class="tab">
-<table class="table text-sm mb-0 table-striped">
-    <thead>
-        <tr>
-            <th width="10%" scope="col">Appartement</th>
-            <th width="15%" scope="col">Locataire</th>
-            <th scope="col">Loyer HC</th>
-            <th scope="col">Loyer TTC</th>
-            <th scope="col">Caution</th>
-            <th scope="col">Date entrée</th>
-            <th scope="col">Surface</th>
-        </tr>
-    </thead>
-
-    {% set sommeHC = 0 %}
-    {% set sommeTTC = 0 %}
-    {% set sommeCaution = 0 %}
-    {% for b in baux %}
-
-        <tr>
-            <td><a href="{{ path('appartementConsulter', { 'id': b.appartement.id }) }}">{{ b.appartement.porte }}</a></td>
-            <td><a href="{{ path('bauxConsulter', { 'id': b.id }) }}">{{b.locataires[0].nom}} {% if b.locataires[1] is defined %}{{b.locataires[1].nom}}{% endif %}</a> </td>
-            <td>{{ b.montantHC }} {% if b.montantHC != null %}€{% endif %}</td>
-            <td>{{ b.montantHC + b.montantCharges }} {% if b.montantHC + b.montantCharges != null %}€{% endif %}</td>
-            <td>{{ b.montantCaution }} {% if b.montantCaution != null %}€{% endif %}</td>
-            <td>{{ b.dateDebut|date("d/m/Y") }}</td>
-            <td>{{ b.appartement.surface }} {% if b.appartement.surface != null %}m²{% endif %}</td>
-        </tr>
-        {% set sommeHC = sommeHC + b.montantHC%}
-        {% set sommeTTC = sommeTTC+ (b.montantHC + b.montantCharges)%}
-        {% set sommeCaution = sommeCaution + b.montantCaution%}
-    {% endfor %}
-
-
-    <tr>
-        
-        <th scope="col">Montant total</th>
-        <th scope="col"></th>
-        <th scope="col">{{sommeHC}}€</th>
-        <th scope="col">{{sommeTTC}}€</th>
-        <th scope="col">{{sommeCaution}}€</th>
-    </tr>
-</table>
+<div class="container">
+    <div class="text-center">
+        <h2></h2>
 </div>
+</div></br>
+
+      <section class="tables">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header border-bottom">
+                  <h3 class="h4 mb-0">Liste des appartements et des locataires</h3>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table text-sm mb-0 table-striped">
+                      <thead>
+                        <tr>
+                          <thead>
+                            <tr>
+                                <th width="10%" scope="col">Appartement</th>
+                                <th width="15%" scope="col">Locataire</th>
+                                <th scope="col">Loyer HC</th>
+                                <th scope="col">Caution</th>
+                                <th scope="col">Loyer TTC</th>
+                                <th scope="col">Date entrée</th>
+                                <th scope="col">Surface</th>
+                            </tr>
+                          </thead>
+                              {% set sommeHC = 0 %}
+                              {% set sommeTTC = 0 %}
+                              {% set sommeCaution = 0 %}
+                              {% for b in baux %}
+                        </tr>
+                      </thead>
+                      <tr>
+                        <td><a href="{{ path('appartementConsulter', { 'id': b.appartement.id }) }}">{{ b.appartement.porte }}</a></td>
+                        <td><a href="{{ path('bauxConsulter', { 'id': b.id }) }}">{{b.locataires[0].nom}} {% if b.locataires[1] is defined %}{{b.locataires[1].nom}}{% endif %}</a> </td>
+                        <td>{{ b.montantHC }} {% if b.montantHC != null %}€{% endif %}</td>
+                        <td>{{ b.montantCaution }} {% if b.montantCaution != null %}€{% endif %}</td>
+                        <td>{{ b.montantHC + b.montantCharges }} {% if b.montantHC + b.montantCharges != null %}€{% endif %}</td>
+                        <td>{{ b.dateDebut|date("d/m/Y") }}</td>
+                        <td>{{ b.appartement.surface }} {% if b.appartement.surface != null %}m²{% endif %}</td>
+                      </tr>
+                      {% set sommeHC = sommeHC + b.montantHC%}
+                      {% set sommeTTC = sommeTTC+ (b.montantHC + b.montantCharges)%}
+                      {% set sommeCaution = sommeCaution + b.montantCaution%}
+                      {% endfor %}
+                    </table></br>
+                    <button type="button" class="btn btn-primary mt-3">
+                        Anciens locataires
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+</section>
 
 {% endblock %}
