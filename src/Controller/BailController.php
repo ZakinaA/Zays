@@ -35,6 +35,20 @@ class BailController extends AbstractController
     
     }
 
+    public function consulterLoyer(ManagerRegistry $doctrine, int $id){
+
+        $b = $doctrine->getRepository(Bail::class)->find($id);
+
+        if (!$b) {
+            throw $this->createNotFoundException(
+            'Aucun Loyer trouvé'
+            );
+        }
+
+        return $this->render('bail/consulterLoyer.html.twig', [
+            'b' => $b,]);
+    }
+
 
     // Ajout d'un bail à partir d'un formulaire
 
