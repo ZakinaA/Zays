@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Fiche du bail {% endblock %}
+{% block title %} Zays {% endblock %}
 
 
-{% block titrePage %} Information du bail 
+{% block titrePage %}
 
 <!--  PDF   -->
 
@@ -17,93 +17,59 @@
 <br />
 
 
-<section class="pb-5"> 
-  <div class="container-fluid">
-    <div class="row">
-
-
-
-      <div class="col-lg-6">
-        <div class ="card">
-          <div class="card-header border-bottom">
-              <h3>Numéro du bail</h3>
-              <br/><p> {{bail.id}} </p>
-          </div>
-
-
-          <div class="card-header border-bottom">
-              <h3>Nom locataire(s)</h3>
-              <br/><p> {{bail.locataires[0].nom}} {% if bail.locataires[1] is defined %} {{bail.locataires[1].nom}} {%endif%} </p>
-          </div>
-
-          <div class="card-header border-bottom">
-              <h3>Numéro de porte d'appartement</h3>
-              <br/><a href="{{ path('appartementConsulter', { 'id': bail.appartement.id }) }}"><p> {{bail.appartement.porte}} </a></p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Date de début du bail</h3>
-            <br/><p> {{bail.dateDebut|date("d/m/Y")}} </p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Date de fin du bail</h3>
-            <br/><p> {% if bail.dateFin is defined and not "null" %} {{bail.dateFin|date("d/m/Y")}} {% endif %} </p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Durée du bail</h3>
-            <br/><p> {{bail.dureeBail}}</p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Associé en charge</h3>
-            <br/><p> {% if bail.associe.nom is defined %} {{bail.associe.nom}} {%endif%} </p>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class ="card">
-          <div class="card-header border-bottom">
-              <h3>Montant hors charges</h3>
-              <br/><p> {{bail.montantHC}} €</p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Charges</h3>
-            <br/><p> {{bail.montantCharges}} €</p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Montant TTC</h3>
-            <br/><p> {{bail.montantHC + bail.montantCharges}} €</p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Cautionneur(s)</h3>
-            <br/><p> {{bail.nomCaution1}} {% if bail.nomCaution2 is defined and bail.nomCaution2 !='' %} & {{bail.nomCaution2}} {%endif%} </p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Montant Caution</h3>
-            <br/><p> {{bail.montantCaution}} €</p>
-          </div>
-
-          <div class="card-header border-bottom">
-            <h3>Montant première échéance</h3>
-            <br/><p> {{bail.montantPremEcheance}} €</p>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
+<section class="tables">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header border-bottom">
+                  <h3 class="h4 mb-0">Information du Bail</h3>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table text-sm mb-0">
+                      <thead>
+                        <tr>
+                          <thead>
+                            <tr>
+                                <th scope="col">N° Bail</th>
+                                <th scope="col">Locataire</th>
+                                <th scope="col">N° Appartement</th>
+                                <th scope="col">Début du Bail</th>
+                                <th scope="col">Fin du Bail</th>
+                                <th scope="col">Durée du Bail</th>
+                                <th scope="col">Associé en charge</th>
+                                <th scope="col">Montant hors charges</th>
+                                <th scope="col">Charges</th>
+                                <th scope="col">Montant TTC</th>
+                                <th scope="col">Cautionneur(s)</th>
+                                <th scope="col">Montant Caution</th>
+                                <th scope="col">Montant première échéance</th>
+                            </tr>
+                          </thead>
+                        </tr>
+                      </thead>
+                      <tr>
+                      <td>{{bail.id}}</td>
+                      <td>{{bail.locataires[0].nom}} {% if bail.locataires[1] is defined %} {{bail.locataires[1].nom}} {%endif%}</td>
+                      <td><a href="{{ path('appartementConsulter', { 'id': bail.appartement.id }) }}"><p> {{bail.appartement.porte}} </a></td>
+                      <td>{{bail.dateDebut|date("d/m/Y")}}</td>
+                      <td>{% if bail.dateFin is defined and not "null" %} {{bail.dateFin|date("d/m/Y")}} {% endif %}</td>
+                      <td>{{bail.dureeBail}}</td>
+                      <td>{% if bail.associe.nom is defined %} {{bail.associe.nom}} {%endif%}</td>
+                      <td>{{bail.montantHC}} €</td>
+                      <td>{{bail.montantCharges}} €</td>
+                      <td>{{bail.montantHC + bail.montantCharges}} €</td>
+                      <td>{{bail.nomCaution1}} {% if bail.nomCaution2 is defined and bail.nomCaution2 !='' %} & {{bail.nomCaution2}} {%endif%}</td>
+                      <td>{{bail.montantCaution}} €</td>
+                      <td>{{bail.montantPremEcheance}} €</td>
+                      </tr>
+                    </table></br>
+                  </div>
+                </div>
+              </div>
+            </div>
 </section>
-
-  
 
 
 {% endblock %}
