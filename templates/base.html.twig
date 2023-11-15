@@ -22,6 +22,11 @@
             <link rel="stylesheet" href="{{asset('css/custom.css')}}">
             <!-- Favicon-->
             <link rel="icon" href="{{ asset('sz.png') }}">
+            <!-- Ajoutez ce lien dans la section head de votre fichier HTML -->
+            <!-- Ajoutez ce lien dans la section head de votre fichier HTML -->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+
             <!-- Tweaks for older IEs--><!--[if lt IE 9]>
                 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
                 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -44,35 +49,43 @@
 
           <!-- Small Brand information, appears on minimized sidebar-->
           <a class="brand-small text-center" href="{{path('bauxLister')}}">
-            <p class="h1 m-0">ZY</p>
+            <p class="h1 m-0">SZ</p>
           </a>
 
         </div>
         <!-- Sidebar Navigation Menus-->
         <span class="text-uppercase text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Menu</span>
         <ul class="list-unstyled">
+
+          <!-- ONGLET Home -->
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ asset('baux/lister') }}"> 
+                <i class="material-icons svg-icon svg-icon-sm svg-icon-heavy me-2">home</i> Home
+            </a>
+          </li>
+
           <!-- ONGLET APPARTEMENT -->
           <li class="sidebar-item">
-          <a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse"> 
-              <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                <use xlink:href="#real-estate-1"> </use>
-              </svg>Apartments</a>
-            <ul class="collapse list-unstyled " id="exampledropdownDropdown">
-              <li><a class="sidebar-link" href="{{asset('baux/lister')}}">List of apartments and tenants</a></li>
-              <li><a class="sidebar-link" href="{{asset('baux/ajouter')}}">Add a new lease</a></li>
+          <a class="sidebar-link" href="#appartementDropdown" data-bs-toggle="collapse">
+              <i class="material-icons svg-icon svg-icon-sm svg-icon-heavy me-2">apartment</i> Appartement
+          </a>
+            <ul class="collapse list-unstyled " id="appartementDropdown">
+              <li><a class="sidebar-link" href="{{asset('baux/lister')}}">Liste des appartements et des locataires</a></li>
+              <li><a class="sidebar-link" href="{{asset('baux/ajouter')}}">Ajouter un nouveau bail</a></li>
             </ul>
           </li>
 
-          <ul class="list-unstyled">
-            <li class="sidebar-item"><a class="sidebar-link" href="forms.html"> 
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                  <use xlink:href="#survey-1"> </use>
-                </svg>Forms </a></li>
-            <li class="sidebar-item"><a class="sidebar-link" href="charts.html"> 
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                  <use xlink:href="#sales-up-1"> </use>
-                </svg>Charts </a></li>
-          </ul>
+          <!-- ONGLET PAIEMENTS -->
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="#paiementsDropdown" data-bs-toggle="collapse">
+                <i class="material-icons svg-icon svg-icon-sm svg-icon-heavy me-2">payment</i> Paiement
+            </a>
+            <ul class="collapse list-unstyled " id="paiementsDropdown">
+              <li><a class="sidebar-link" href="{{asset('paiement/listerPaiement')}}">Loyers recus</a></li>
+              <li><a class="sidebar-link" href="{{asset('paiement/effectuerPaiement')}}">Effectuer un paiement</a></li>
+              <li><a class="sidebar-link" href="{{asset('baux/ajouter')}}">Informations bancaires</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </nav>
@@ -87,7 +100,7 @@
                   <svg class="svg-icon svg-icon-sm svg-icon-heavy text-white">
                     <use xlink:href="#menu-1"> </use>
                   </svg></a><a class="navbar-brand ms-2" href="{{path('bauxLister')}}">
-                  <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"><span class="text-white fw-normal text-xs">Société</span><strong class="text-primary text-sm"> ZAYS</strong></div></a></div>
+                  <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"><span class="text-white fw-normal text-xs">Société</span><strong class="text-primary text-sm"> SCI ZAYS</strong></div></a></div>
               <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
 
 
