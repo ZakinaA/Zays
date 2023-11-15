@@ -15,6 +15,15 @@ bauxLister:
     path: /baux/lister
     controller: App\Controller\BailController::listerBaux
 
+# CONSULTER LOYER 
+consulterLoyer:
+    path: /paiement/consulterLoyer/{id}
+    controller: App\Controller\BailController::consulterLoyer
+
+# CONSULTER PAIEMENT
+listerPaiement:
+    path: /paiement/listerPaiement
+    controller: App\Controller\PaiementController::listerPaiement
 
 bailAjouter:
     path: /baux/ajouter

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block style %}
+.tab{
+    text-align:center;
+}  
+
+{% endblock %}
+
+{% block title %}Zays {% endblock %}
+
+{% block contenu %}
+
+<br/>
+
+<div class="container">
+    <div class="text-center">
+        <h2></h2>
+</div>
+</div></br>
+
+      <section class="tables">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header border-bottom">
+                  <h3 class="h4 mb-0">
+                    Loyer de {{ b.locataires[0].nom ~ ' ' ~ b.locataires[0].prenom }}
+
+                    {% if b.locataires[1] is defined %}
+                        {{ ' et ' ~ b.locataires[1].nom ~ ' ' ~ b.locataires[1].prenom }}
+                    {% endif %}
+
+                    - appt{{ b.appartement.porte }}
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table text-sm mb-0 table-striped">
+                      <thead>
+                        <tr>
+                          <thead>
+                            <tr>
+                                <th scope="col">Mois</th>
+                                <th scope="col">Versement</th>
+                                <th scope="col">Caf</th>
+                                <th scope="col">Total versé</th>
+                                <th scope="col">Solde du mois</th>
+                                <th scope="col">Solde total</th>
+                            </tr>
+                          </thead>
+                              {% for p in b.paiements %}
+                              {% set montantV = 0 %}
+                              {% set montantC = 0 %}
+                              {% set somme = 0 %}
+                          <tr>
+                            <td></a>{{ p.dateP|date("m/Y") }}</td>
+                            <td></a>{% if p.montant != null %} {{ p.montant }} € {% set montantV = p.montant %} {% endif %}</td>
+                            <td>{{ b.locataires[0].montantCaf}}</a></td>
+                            <td></a>{{ p.montant is defined and b.locataires[0].montantCaf is defined ? (p.montant + b.locataires[0].montantCaf) : 'N/A' }} €</td>
+                            <td></a></td>
+                            <td></a></td>
+                          </tr>
+                          {% endfor %}
+                      </thead>
+                      <tr>
+                    </table></br>
+                    <input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
+                  </div>
+                </div>
+              </div>
+            </div>
+</section>
+
+{% endblock %}

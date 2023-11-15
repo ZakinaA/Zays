@@ -9,7 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\MoisAnnee;
 use App\Entity\Bail;
-
+use App\Entity\Paiement;
 
 class PaiementController extends AbstractController
 {
@@ -52,5 +52,12 @@ class PaiementController extends AbstractController
     
     }
 
+    public function listerPaiement(ManagerRegistry $doctrine){
+        $repository = $doctrine->getRepository(Paiement::class);
 
+        $paiements= $repository->findAll();
+
+        return $this->render('paiement/listerPaiement.html.twig', [
+            'pPaiements' => $paiements,]);
+    }
 }
