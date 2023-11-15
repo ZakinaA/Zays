@@ -41,22 +41,27 @@
                         <tr>
                           <thead>
                             <tr>
-                                <th width="10%" scope="col">Mois</th>
-                                <th width="15%" scope="col">Versement</th>
+                                <th scope="col">Mois</th>
+                                <th scope="col">Versement</th>
                                 <th scope="col">Caf</th>
                                 <th scope="col">Total versé</th>
                                 <th scope="col">Solde du mois</th>
                                 <th scope="col">Solde total</th>
                             </tr>
                           </thead>
+                              {% for p in b.paiements %}
+                              {% set montantV = 0 %}
+                              {% set montantC = 0 %}
+                              {% set somme = 0 %}
                           <tr>
-                            <td></a></td>
-                            <td></a></td>
+                            <td></a>{{ p.dateP|date("m/Y") }}</td>
+                            <td></a>{% if p.montant != null %} {{ p.montant }} € {% set montantV = p.montant %} {% endif %}</td>
                             <td>{{ b.locataires[0].montantCaf}}</a></td>
-                            <td></a></td>
+                            <td></a>{{ p.montant is defined and b.locataires[0].montantCaf is defined ? (p.montant + b.locataires[0].montantCaf) : 'N/A' }} €</td>
                             <td></a></td>
                             <td></a></td>
                           </tr>
+                          {% endfor %}
                       </thead>
                       <tr>
                     </table></br>
