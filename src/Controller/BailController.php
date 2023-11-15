@@ -49,7 +49,7 @@ class BailController extends AbstractController
             'b' => $b,]);
     }
 
-
+    
     // Ajout d'un bail à partir d'un formulaire
 
     public function ajouterBail(Request $request, ManagerRegistry $doctrine){
